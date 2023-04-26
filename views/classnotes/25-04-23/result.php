@@ -13,9 +13,9 @@
 
 <div class="container text-center">
 
-    <h4 class="card-title">Resultado Operación</h4>
+    <h4 class="card-title">Salario Trabajador</h4>
 
-    <table class="table table-bordered table-striped table-light">
+    <table class="table table-bordered table-striped ">
         <thead>
             <tr>
                 <th>Dato</th>
