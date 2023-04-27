@@ -40,4 +40,26 @@
         }
     }
 
+    function integer_validation($variables,$failure_route){
+        foreach($variables as $variable){
+
+            $variable=$variable*1;
+
+            if(!is_int($variable)){
+                echo(gettype($variable));   
+                //header("Location: ../../../$failure_route");
+            }
+        }
+    }
+
+    function float_validation($variables,$failure_route){
+        foreach($variables as $variable){
+            if(!is_float($variable)){
+                header("Location: ../../../$failure_route");
+            }
+        }
+    }
+
+    
+
 ?>

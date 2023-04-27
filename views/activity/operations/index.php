@@ -12,11 +12,11 @@
             [
                 [
                     'label'=>"Logitud Base",
-                    'type'=>"number",
+                    'type'=>"float",
                     'name'=>"base_triangulo"
                 ],
                 [   'label'=>"Logitud Altura",
-                    'type'=>"number",
+                    'type'=>"float",
                     'name'=>"altura_triangulo"
                 ]
             ],
@@ -53,7 +53,7 @@
                 [
                     'label'=>"Base de la potencia",
                     'name'=>"base_potencia",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [   'label'=>"Exponente de la potencia",
                     'name'=>"exponente_potencia",
@@ -75,11 +75,11 @@
                 [
                     'label'=>"Cantidad Euros",
                     'name'=>"cantidad_euros",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [   'label'=>"Tasa de cambio",
                     'name'=>"tasa_cambio",
-                    'type'=>"number"
+                    'type'=>"float"
                 ]
             ],
             "Convertir"
@@ -95,11 +95,11 @@
                 [
                     'label'=>"Longitud Base",
                     'name'=>"base_rectangulo",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [   'label'=>"Longitud Altura",
                     'name'=>"altura_rectangulo",
-                    'type'=>"number"
+                    'type'=>"float"
                 ]
             ],
             "Calcular"
@@ -114,8 +114,8 @@
             [
                 [
                     'label'=>"Logitud Lado",
-                    'name'=>"lado_cuadraro",
-                    'type'=>"number"
+                    'name'=>"lado_cuadrado",
+                    'type'=>"float"
                 ]
             ],
             "Calcular"
@@ -131,33 +131,12 @@
                 [
                     'label'=>"Valor Radio",
                     'name'=>"radio_cilindro",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [
                     'label'=>"Valor Altura",
                     'name'=>"altura_cilindro",
-                    'type'=>"number"
-                ]
-            ],
-            "Calcular"
-        );
-    ?>
-
-    <!--Calculo Area y Volumen Cilindro-->
-    <?php
-        forms_generate(
-            "cylinder",
-            "Calcular Area y Volumen del Cilindro",
-            [
-                [
-                    'label'=>"Valor Radio",
-                    'name'=>"radio_cilindro",
-                    'type'=>"number"
-                ],
-                [
-                    'label'=>"Valor Altura",
-                    'name'=>"altura_cilindro",
-                    'type'=>"number"
+                    'type'=>"float"
                 ]
             ],
             "Calcular"
@@ -173,17 +152,17 @@
                 [
                     'label'=>"Primer Numero",
                     'name'=>"primer_numero",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [
                     'label'=>"Segundo Numero",
                     'name'=>"segundo_numero",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [
                     'label'=>"Tercer Numero",
                     'name'=>"tercer_numero",
-                    'type'=>"number"
+                    'type'=>"float"
                 ]
 
             ],
@@ -194,13 +173,13 @@
     <!--Elevacion Potencia reales con naturales-->
     <?php
         forms_generate(
-            "empowerment",
+            "empowerment_conditional",
             "Potenciacion",
             [
                 [
                     'label'=>"Base de la potencia",
                     'name'=>"base_potencia",
-                    'type'=>"number"
+                    'type'=>"float"
                 ],
                 [   'label'=>"Exponente de la potencia",
                     'name'=>"exponente_potencia",
