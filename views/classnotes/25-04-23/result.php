@@ -1,4 +1,6 @@
 <?php 
+    require("../../../addons/functions_global.php");
+
     //Activacion Sesion y Declaracion Titulo Pagina
     session_start();
     $_SESSION['title']="Salario Trabajador";
@@ -7,6 +9,11 @@
     $dias_trabajados=$_SESSION['dias_trabajados'];
     $horas_diarias=$_SESSION['horas_diarias'];
     $salario_base=$_SESSION['salario_base'];
+
+    validacion_datos(
+        [$valor_total,$dias_trabajados,$horas_diarias,$salario_base],
+        "views/classnotes/25-04-23/"
+    );
 
     require("../../header.php");
 ?>
