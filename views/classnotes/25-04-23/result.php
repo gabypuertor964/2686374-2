@@ -10,8 +10,13 @@
     $horas_diarias=$_SESSION['horas_diarias'];
     $salario_base=$_SESSION['salario_base'];
 
-    validacion_datos(
-        [$valor_total,$dias_trabajados,$horas_diarias,$salario_base],
+    type_validation(
+        [
+            [$valor_total,"all"],
+            [$dias_trabajados,"all"],
+            [$horas_diarias,"all"],
+            [$salario_base,"all"]
+        ],
         "views/classnotes/25-04-23/"
     );
 
