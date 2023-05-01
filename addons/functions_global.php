@@ -85,8 +85,6 @@
                         }
                     }
 
-
-
                 //En caso de que la validacion no fuera exitosa se redigira al usuario a la "$failure_route"
                 }else{
                     header("Location: ../../../$failure_route");

@@ -3,7 +3,7 @@
 
     //Activacion Sesion y Declaracion Titulo Pagina
     session_start();
-    $_SESSION['title']="Clase 25-04-23";
+    $_SESSION['title_header']="Clase 25-04-23";
 
     require("../../header.php");
 ?>
@@ -58,13 +58,13 @@
                     <div class="mb-3">
                         <label for="horas_diarias" class="form-label">Ingrese la cantidad de Horas diarias trabajadas:</label>
 
-                        <input type="number" class="form-control" name="horas_diarias" aria-describedby="helpId" placeholder="1" min=1 required>
+                        <input type="number" class="form-control" name="horas_diarias" aria-describedby="helpId" placeholder="1" min=1 >
                     </div>
 
                     <div class="mb-3">
                         <label for="salario_base" class="form-label">Ingrese la cantidad de Horas diarias trabajadas:</label>
 
-                        <input type="number" class="form-control" name="salario_base" aria-describedby="helpId" placeholder="4833" min=4833 required>
+                        <input type="number" class="form-control" name="salario_base" aria-describedby="helpId" placeholder="4833" min=4833>
                     </div>
             
                 </div>

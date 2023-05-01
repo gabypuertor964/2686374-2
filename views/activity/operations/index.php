@@ -1,5 +1,5 @@
 <?php
-    $_SESSION['title']="Ejercicio Operaciones";
+    $_SESSION['title_header']="Ejercicio Operaciones";
     require("../../header.php");
     require("../../../controllers/activity/operations/structures.php");
 ?>
