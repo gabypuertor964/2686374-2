@@ -9,7 +9,7 @@
         }
     }
 
-    function type_validation($elements_validations,$failure_route,$success_route=null){
+    function type_validation($elements_validations,$failure_route,$success_route=null,$addons=null){
 
         //Variable de Control
         $validation=TRUE;
@@ -74,10 +74,18 @@
                 }
                 
                 if($validation){
-                    //Si se definio una "success_route", en caso de que la validacion sea exitosa, el usuario sera redirigido a dicha ruta, en caso de no haber sido definida no pasara nada
-                    if($success_route<>null){
-                        header("Location: ../../../$success_route");
+
+                    if($addons['route_absolute']==true){
+                        header("Location: $success_route");
+                    }else{
+    
+                        //Si se definio una "success_route", en caso de que la validacion sea exitosa, el usuario sera redirigido a dicha ruta, en caso de no haber sido definida no pasara nada
+                        if($success_route<>null){
+                            header("Location: ../../../$success_route");
+                        }
                     }
+
+
 
                 //En caso de que la validacion no fuera exitosa se redigira al usuario a la "$failure_route"
                 }else{
@@ -86,8 +94,14 @@
 
             }else{
 
-                //En caso de fallar la validacion sera retornada a la "$failure_route"
-                header("Location: ../../../$failure_route");
+                //Excepcion: Definicion manual de ruta de retorno en caso de usar un sistema de directorios diferente
+                if($addons['route_absolute']==true){
+                    header("Location: $failure_route");
+                }else{
+
+                    //En caso de fallar la validacion sera retornada a la "$failure_route"
+                    header("Location: ../../../$failure_route");
+                }
             }
         }
         
