@@ -143,6 +143,22 @@
         );
     ?>
 
+    <!--Calculo Longitud y Area Circunferencia-->
+    <?php
+        forms_generate(
+            "circle",
+            "Calcular Longitud y Area Circunferencia",
+            [
+                [
+                    'label'=>"Valor Radio",
+                    'name'=>"radio_circulo",
+                    'type'=>"float"
+                ]
+            ],
+            "Calcular"
+        );
+    ?>
+
     <!--Calculo Promedio 3 digitos-->
     <?php
         forms_generate(

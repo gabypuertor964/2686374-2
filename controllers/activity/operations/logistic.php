@@ -4,8 +4,7 @@
 
     $resultados=[];
     $ruta_retorno="views/activity/operations";
-
-    validacion_datos($_GET,$ruta_retorno);
+    type_validation([[$_GET,"all"]],$ruta_retorno);
 
     function triangle($base,$altura){
         $area=($base*$altura)/2;
@@ -13,8 +12,8 @@
         echo($area);
     }
 
-    function variables_return($primera_variable,$segunda_variable){
-        echo($primera_variable."<br>".$segunda_variable);
+    function variables_return($var_1,$var_2){
+        echo($var_1."<br>".$var_2);
     }
 
     function empowerment($base,$exponente){
@@ -53,13 +52,18 @@
         echo($area."<br>".$volumen);
     }
 
+    function circle($radio){
+        $longitud=2*pi()*$radio;
+        $area=pi()*$radio**2;
+
+        echo($longitud."<br>".$area);
+    }
+
     function average($primer_numero,$segundo_numero,$tercer_numero){
         $promedio=($primer_numero+$segundo_numero+$tercer_numero)/3;
 
         echo($promedio);
     }
-
-
 
     switch($_GET['function']){
 
@@ -67,17 +71,30 @@
             $base=recuperacion_post("base_triangulo");
             $altura=recuperacion_post("altura_triangulo");
 
-            validacion_datos([$base,$altura],$ruta_retorno);
-            numeric_validation([$base,$altura],$ruta_retorno);
+            type_validation(
+                [
+                    [$base,"numeric"],
+                    [$altura,"numeric"]
+                ],
+                $ruta_retorno
+            );
+
             triangle($base,$altura);
         break;
 
         case "variables_return":
-            $primera_variable=recuperacion_post("primera_variable");
-            $segunda_variable=recuperacion_post("segunda_variable");
+            $var_1=recuperacion_post("primera_variable");
+            $var_2=recuperacion_post("segunda_variable");
 
-            validacion_datos([$primera_variable,$segunda_variable],$ruta_retorno);
-            variables_return($primera_variable,$segunda_variable);
+            type_validation(
+                [
+                    [$var_1,"all"],
+                    [$var_2,"all"]
+                ],
+                $ruta_retorno
+            );
+
+            variables_return($var_1,$var_2);
         break;
 
         case "empowerment":
@@ -89,8 +106,13 @@
                 $exponente=2;
             }
 
-            validacion_datos([$base,$exponente],$ruta_retorno);
-            numeric_validation([$base,$exponente],$ruta_retorno);
+            type_validation(
+                [
+                    [$base,"numeric"]
+                ],
+                $ruta_retorno
+            );
+
             empowerment($base,$exponente);
         break;
 
@@ -98,9 +120,15 @@
             $euros=recuperacion_post("cantidad_euros");
             $tasa_cambio=recuperacion_post("tasa_cambio");
 
-            validacion_datos([$euros,$tasa_cambio],$ruta_retorno);
-            numeric_validation([$euros,$tasa_cambio],$ruta_retorno);
-            float_validation([$tasa_cambio],$ruta_retorno);
+            type_validation(
+                [
+                    [$euros,"double"],
+                    [$tasa_cambio,"numeric"],
+                ],
+                $ruta_retorno
+            );
+
+
             trm($euros,$tasa_cambio);
         break;
 
@@ -108,17 +136,27 @@
             $base=recuperacion_post("base_rectangulo");
             $altura=recuperacion_post("altura_rectangulo");
 
-            validacion_datos([$base,$altura],$ruta_retorno);
-            numeric_validation([$base,$altura],$ruta_retorno);
-            float_validation([$altura],$ruta_retorno);
+            type_validation(
+                [
+                    [$base,"double"],
+                    [$altura,"double"],
+                ],
+                $ruta_retorno
+            );
+
             rectangle($base,$altura);
         break;
 
         case "square":
             $lado=recuperacion_post("lado_cuadrado");
 
-            validacion_datos([$lado],$ruta_retorno);
-            numeric_validation([$lado],$ruta_retorno);
+            type_validation(
+                [
+                    [$lado,"numeric"]
+                ],
+                $ruta_retorno
+            );
+
             square($lado);
         break;
 
@@ -126,9 +164,29 @@
             $radio=recuperacion_post("radio_cilindro");
             $altura=recuperacion_post("altura_cilindro");
 
-            validacion_datos([$radio,$altura],$ruta_retorno);
-            numeric_validation([$radio,$altura],$ruta_retorno);
+            type_validation(
+                [
+                    [$radio,"numeric"],
+                    [$altura,"numeric"],
+                ],
+                $ruta_retorno
+            );
+
             cylinder($radio,$altura);
+        break;
+
+        case "circle":
+            $radio_circulo=recuperacion_post("radio_circulo");
+
+            type_validation(
+                [
+                    [$radio_circulo,"numeric"]
+                ],
+                $ruta_retorno
+            );
+
+            circle($radio_circulo);
+
         break;
 
         case "average":
@@ -136,8 +194,15 @@
             $num_2=recuperacion_post("segundo_numero");
             $num_3=recuperacion_post("tercer_numero");
 
-            validacion_datos([$num_1,$num_2,$num_3],$ruta_retorno);
-            numeric_validation([$num_1,$num_2,$num_3],$ruta_retorno);
+            type_validation(
+                [
+                    [$num_1,"numeric"],
+                    [$num_2,"numeric"],
+                    [$num_3,"numeric"]
+                ],
+                $ruta_retorno
+            );
+
             average($num_1,$num_2,$num_3);
         break;
 
@@ -145,10 +210,14 @@
             $base=recuperacion_post("base_potencia");
             $exponente=recuperacion_post("exponente_potencia");
 
-            validacion_datos([$base,$exponente],$ruta_retorno);
-            numeric_validation([$base,$exponente],$ruta_retorno);
-            integer_validation([$exponente],$ruta_retorno);
-            
+            type_validation(
+                [
+                    [$base,"numeric"],
+                    [$exponente,"integer"]
+                ],
+                $ruta_retorno
+            );
+
             empowerment($base,$exponente);
         break;
 
