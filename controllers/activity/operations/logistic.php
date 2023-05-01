@@ -7,6 +7,7 @@
     type_validation([[$_GET,"all"]],$ruta_retorno);
 
     function triangle($base,$altura){
+        //(bxh)/2
         $area=($base*$altura)/2;
 
         echo($area);
@@ -29,13 +30,17 @@
     }
 
     function rectangle($base,$altura){
+        //b*h
         $area=$base*$altura;
 
         echo($area);
     }
 
     function square($lado){
+        //l²
         $area=$lado**2;
+
+        //l*4
         $perimitero=$lado*4;
 
         echo($area."<br>".$perimitero);
@@ -53,7 +58,11 @@
     }
 
     function circle($radio){
+
+        //2π*r.
         $longitud=2*pi()*$radio;
+
+        //A = π r²
         $area=pi()*$radio**2;
 
         echo($longitud."<br>".$area);
