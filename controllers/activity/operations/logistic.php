@@ -350,6 +350,8 @@
 
         type_validation(
             [
+                [$radio,"numeric"],
+                [$altura,"numeric"],
                 [$data,"all"]
             ],
             $ruta_retorno,
@@ -378,7 +380,7 @@
         session_start();
         $data=[
             'title_header'=>"Logitudes Circulo",
-            'title'=>"Calcular el area y la longitud de un Cilindro",
+            'title'=>"Calcular el area y la longitud de un Circulo",
             'thead'=>[
                 'Dato',
                 'Valor Ingresado'
@@ -400,6 +402,7 @@
 
         type_validation(
             [
+                [$radio,"numeric"],
                 [$data,'all']
             ],
             $ruta_retorno,
@@ -578,8 +581,6 @@
 
             average($num_1,$num_2,$num_3);
         break;
-
-        
 
         case "empowerment_conditional":
             $base=recuperacion_post("base_potencia");

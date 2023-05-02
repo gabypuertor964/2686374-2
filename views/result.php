@@ -52,8 +52,9 @@
                 }   
             ?>
         </tbody>
-
     </table>
+
+    <a class="btn btn-primary col-md-12" href="../" role="button">Regresar al menu principal</a>
 </div>
 
 

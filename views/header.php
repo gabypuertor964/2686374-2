@@ -1,16 +1,20 @@
 <?php 
     $title_header=$_SESSION['title_header'];
-    $addons=$_SESSION['addons'];
 
     $prefix="../../../";
 
-    foreach($addons as $addon){
-        switch($addon['name']){
-            case "prefix_route":
-                $prefix=$addon["value"];
-            break;
+    if(isset($_SESSION['addons'])){
+
+        $addons=$_SESSION['addons'];
+        foreach($addons as $addon){
+            switch($addon['name']){
+                case "prefix_route":
+                    $prefix=$addon["value"];
+                break;
+            }
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -4,6 +4,12 @@
     //Activacion Sesion y Declaracion Titulo Pagina
     session_start();
     $_SESSION['title_header']="Clase 25-04-23";
+    $_SESSION['addons']=[
+        [
+            'name'=>"prefix_route",
+            'value'=>"../../../"
+        ]
+    ];
 
     require("../../header.php");      
 ?>

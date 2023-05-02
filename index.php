@@ -1,15 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Apuntes Desarrollo PHP</title>
-</head>
-<body>
+<?php
     
-</body>
-</html>
+    session_start();
+    $_SESSION['title_header']="Cuaderno Ficha";
+    $_SESSION['addons']=[
+        [
+            'name'=>"prefix_route",
+            'value'=>""
+        ]
+    ];
+
+    require("views/header.php");
+?>
+    <div class="container text-center">
+
+        <a class="btn btn-primary col-md-12" href="views/activity/operations/index.php" role="button">Actividad Operaciones</a>
+
+    </div>
+
+    <div class="container">
+
+        <a class="btn btn-primary col-md-12" href="views/classnotes/25-04-23/index.php" role="button">Actividad Salario</a>
+        
+    </div>
+
+<?php
+    require("views/footer.php");
+?>
