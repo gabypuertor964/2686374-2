@@ -3,25 +3,24 @@
     require("../../../addons/functions_global.php");
 
     //Guardado Valores POST en variables
-    $horas_diarias=recuperacion_post("horas_diarias");
-    $salario_base=recuperacion_post("salario_base");
-
-    var_dump($horas_diarias);
-    var_dump($salario_base);
+    $cantidad_horas=recuperacion_post("cantidad_horas");
+    $valor_hora=recuperacion_post("valor_hora");
+    $dias_trabajados=recuperacion_post("dias_trabajados");
 
     type_validation(
         [
-            [$salario_base,"numeric"],
-            [$horas_diarias,"numeric"]
-            
-
+            [$cantidad_horas,"numeric"],
+            [$valor_hora,"numeric"]
         ],
-        "views/classnotes/25-04-23",
-        "../"
+        "views/classnotes/25-04-23"
     );
+    
+    if($dias_trabajados==null){
+        $dias_trabajados=5;
+    }
 
-    /*
-    //Activacion session y guardado de valor calculado, listo para abrir en la nueva vista
+    $salario_total=($dias_trabajados*$cantidad_horas*$valor_hora);
+
     session_start();
 
     $data=[
@@ -33,8 +32,8 @@
         ],
         'rows'=>[
             ['Dias trabajados',$dias_trabajados],
-            ['Horas Diarias Trabajadas',$horas_diarias],
-            ['Salario base',"$$salario_base"],
+            ['Horas Dias trabajadas',$cantidad_horas],
+            ['Valor Hora',"$$valor_hora"],
             ['Salario total',"$$salario_total"],
         ]
     ];
@@ -43,12 +42,11 @@
 
     type_validation(
         [
-            [$salario_base,"numeric"],
-            [$horas_diarias,"numeric"],
+            [$dias_trabajados,"numeric"],
+            [$salario_total,"numeric"],
+            [$data ,"all"]
         ],
         "views/classnotes/25-04-23",
         "views/result.php"
-    );*/
-    
-
+    );
 ?>

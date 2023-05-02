@@ -1,6 +1,7 @@
 <?php 
     $title_header=$_SESSION['title_header'];
-    $addons=$_SESSION['addons'];
+
+    
 
     //Generacion de prefijo segun ubicacion manual de ruta
     if(isset($addons) && $addons['type']=='route_absolute'){

@@ -7,10 +7,35 @@
     type_validation([[$_GET,"all"]],$ruta_retorno);
 
     function triangle($base,$altura){
+
+        global $ruta_retorno;
+
         //(bxh)/2
         $area=($base*$altura)/2;
 
-        echo($area);
+        session_start();
+        $data=[
+            'title_header'=>"Area Triangulo",
+            'title'=>"Calcular el Area de un Triangulo",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Base',$base],
+                ['Altura',$altura]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [$data ,"all"]
+            ],
+            $ruta_retorno,
+            "views/result.php"
+        );
     }
 
     function variables_return($var_1,$var_2){

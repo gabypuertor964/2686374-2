@@ -11,97 +11,70 @@
 
     function type_validation($elements_validations,$failure_route,$success_route=null,$addons=null){
 
-        //Variable de Control
-        $validation=TRUE;
+        $history=[];
 
-        
         foreach($elements_validations as $element_validation){
 
-            //Guardado valor del dato para facilitar su manejo;
-            $value=$element_validation[0];
+            //Definicion Variable de control
+            $validation=FALSE;
 
-            //Primera Validacion: Los datos estan definidos y no estan vacios (Aplica tanto a arreglos como a variables estandar)
-            if(isset($value) && $value<>NULL)
-            {
+            //Obtencion y guardado del dato a validar
+            $valor=$element_validation[0];
 
-                //Excepcion 1: Validacion Existencia Contenido $_GET
-                if(is_array($value) AND count($value)==0){
-                   $validation=FALSE;
+            if(isset($valor) && $valor<>null){
+
+                //En caso de ser posible se realiza la respectiva conversion de string a numeric (Tanto integer como float)
+                if(is_numeric($valor)){
+                    $valor=$valor*1;
                 }
 
-                //Clasificacion del dato entrante (Number, String)
-                if(is_numeric($value)){
+                //Guardado tipo de dato
+                $type_data=gettype($valor);
 
-                    //Una vez detectada la variable como number,se transformara de string a numeric, simplemente multiplicando por 1
-                    $value=$value*1;
-
-                    //Identificacion especifica tipo Dato
-                    $type_variable=gettype($value);
-
-                }else{
-                    $type_variable="string";
-                }
-
-
-                //Guardado de Arreglo validations en una variable para facilitar su uso
+                //Almacena tipo de dato a validar
                 $type_validation=$element_validation[1];
 
+                //Validaciones general y especificas
                 switch($type_validation){
 
-                    //Caso excepcional 1 (numeric): Que la variable sea numerica sin definir si es integer o double
-                    case 'numeric':
-                        if(
-                            !($type_validation=="numeric" && 
-                            is_numeric($value))
-                        ){
-                            $validation=FALSE;
+                    //Validacion Solo numerica (integer,double)
+                    case "numeric":
+                        if(is_numeric($valor)){
+                            $validation=TRUE;
                         }
                     break;
 
-                    //Validaciones estandar: Integer, Double, etc
+                    //Validacion general
                     default:
-
-                        //En caso de no concordar el tipo de variable con los el tipo de dato ingresado, se informara que la validacion no fue exitosa
-
-                        //Caso Excepcional 2 (all): Simplemente este definida, sin ningun tipo en especifico
-                        if(
-                            !($type_variable==$type_validation) && $type_validation<>"all"
-                        ){
-                            $validation=FALSE;
+                        if($type_data==$type_validation OR $type_validation=="all"){
+                            $validation=TRUE;
                         }
-
                     break;
                 }
-                
-                if($validation){
 
-                    if($addons['route_absolute']==true){
-                        header("Location: $success_route");
-                    }else{
-    
-                        //Si se definio una "success_route", en caso de que la validacion sea exitosa, el usuario sera redirigido a dicha ruta, en caso de no haber sido definida no pasara nada
-                        if($success_route<>null){
-                            header("Location: ../../../$success_route");
-                        }
-                    }
-
-                //En caso de que la validacion no fuera exitosa se redigira al usuario a la "$failure_route"
-                }else{
-                    header("Location: ../../../$failure_route");
-                }
-
-            }else{
-
-                //Excepcion: Definicion manual de ruta de retorno en caso de usar un sistema de directorios diferente
-                if($addons['route_absolute']==true){
-                    header("Location: $failure_route");
-                }else{
-
-                    //En caso de fallar la validacion sera retornada a la "$failure_route"
-                    header("Location: ../../../$failure_route");
-                }
             }
+            
+            //Adicion registro resultado validacion a historial
+            array_push($history,$validation);        
         }
         
+        /*
+            1. array_unique(): Elimina los registros duplicados
+            2. count(): Cuenta los elementos dentro de un arreglo
+
+            Durante la primera etapa de validacion se eliminan los registros duplicados y se revisa que solo haya un unico registro, esto ya que si aun despues de simplificar, quedan dos registros diferentes es por que alguna validacion fallo.
+
+            Asi mismo en caso de solo quedar un valor, se valida que este sea VERDADERO
+        */
+        if(count(array_unique($history))==1 && array_unique($history)[0]==TRUE){
+            if($success_route<>null){
+                header("Location: ../../../$success_route");
+            }
+        }else{
+            header("Location: ../../../$failure_route");
+        }
+
+        
+    
     } 
 ?>

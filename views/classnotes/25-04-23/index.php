@@ -5,7 +5,7 @@
     session_start();
     $_SESSION['title_header']="Clase 25-04-23";
 
-    require("../../header.php");
+    require("../../header.php");      
 ?>
 
     <div class="container">
@@ -39,44 +39,43 @@
         </div>
     </div>
 
-    <div class="container">
+
+    <div class="container text-center">
         
-        <div class="card">
-            <div class="card-header text-center">
-                <h4 class="card-title">Calculadora de Salario segun horas y dias</h4>
-            </div>
-
-            <form action="../../../controllers/classnotes/25-04-23/salary.php" method="POST">
-
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="dias_trabajados" class="form-label">Ingrese la cantidad de dias trabajados:</label>
-
-                        <input type="number" class="form-control" name="dias_trabajados" aria-describedby="helpId" placeholder="Por defecto se tomara el valor de 5 dias" min=1>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="horas_diarias" class="form-label">Ingrese la cantidad de Horas diarias trabajadas:</label>
-
-                        <input type="number" class="form-control" name="horas_diarias" aria-describedby="helpId" placeholder="1" min=1 >
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="salario_base" class="form-label">Ingrese la cantidad de Horas diarias trabajadas:</label>
-
-                        <input type="number" class="form-control" name="salario_base" aria-describedby="helpId" placeholder="4833" min=4833>
-                    </div>
-            
+        <form action="../../../controllers/classnotes/25-04-23/salary.php" method="post">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Calculadora Salario Trabajador</h4>
                 </div>
+                <div class="card-body">
 
+                    <div class="mb-3">
+                      <label for="dias_trabajados" class="form-label">Cantidad de Dias Trabajados</label>
+                      <input type="number" class="form-control" name="dias_trabajados" placeholder="Por defecto se tomara el valor de 5">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="cantidad_horas" class="form-label">Cantidad de Horas diarias Trabajadas</label>
+                      <input type="number"
+                        class="form-control" name="cantidad_horas" placeholder="1" min=1>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="valor_hora" class="form-label">Valor Hora de trabajo</label>
+                      <input type="number" class="form-control" name="valor_hora" placeholder="4833" min=4833>
+                    </div>
+
+
+                </div>
                 <div class="card-footer text-muted">
                     <button type="submit" class="btn btn-primary col-md-12">Calcular</button>
                 </div>
+            </div>
+        </form>
 
-            </form>
-
-        </div>
 
     </div>
+
+    
 
 <?php require("../../footer.php");?>
