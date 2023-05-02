@@ -9,10 +9,7 @@
     //type_validation([[$data,"all"]],"../","",['route_absolute'=>TRUE]);
 
     $_SESSION['title_header']=$data['title_header'];
-    $_SESSION['addons']=[
-        'type'=>'route_absolute',
-        'route'=>'../'
-    ];
+    $_SESSION['addons']=$data['addons'];
 
     require("header.php");
 ?>
@@ -37,6 +34,7 @@
             <?php
                 //Seleccion fila columna de forma individual
                 foreach($data['rows'] as $row){
+
                     //Seccion inicio fila
                     $fila="<tr>";
 

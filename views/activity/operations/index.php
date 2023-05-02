@@ -190,7 +190,7 @@
     <?php
         forms_generate(
             "empowerment_conditional",
-            "Potenciacion",
+            "Potenciacion de Reales con Enteros",
             [
                 [
                     'label'=>"Base de la potencia",

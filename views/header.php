@@ -1,15 +1,16 @@
 <?php 
     $title_header=$_SESSION['title_header'];
+    $addons=$_SESSION['addons'];
 
-    
+    $prefix="../../../";
 
-    //Generacion de prefijo segun ubicacion manual de ruta
-    if(isset($addons) && $addons['type']=='route_absolute'){
-        $prefix=$addons['route'];
-    }else{
-        $prefix="../../../";
+    foreach($addons as $addon){
+        switch($addon['name']){
+            case "prefix_route":
+                $prefix=$addon["value"];
+            break;
+        }
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">

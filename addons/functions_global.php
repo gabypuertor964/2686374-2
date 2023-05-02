@@ -73,8 +73,6 @@
         }else{
             header("Location: ../../../$failure_route");
         }
-
-        
     
     } 
 ?>
