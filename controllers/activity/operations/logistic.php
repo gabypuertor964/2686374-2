@@ -170,7 +170,7 @@
 
         $data=[
             'title_header'=>'TRM EUR-USD',
-            'title'=>'Conversion de DIvisas EURO - DOLAR',
+            'title'=>'Conversion de Divisas EURO - DOLAR',
             'thead'=>[
                 'Dato',
                 'Valor Ingresado'

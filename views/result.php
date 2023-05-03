@@ -6,7 +6,19 @@
 
     $data=$_SESSION['data'];
 
-    //type_validation([[$data,"all"]],"../","",['route_absolute'=>TRUE]);
+    type_validation(
+        [
+            [$data,"all"]
+        ],
+        "../",
+        "",
+        [
+            [
+                'name'=>'route_absoute',
+                TRUE
+            ]
+        ]
+    );
 
     $_SESSION['title_header']=$data['title_header'];
     $_SESSION['addons']=$data['addons'];

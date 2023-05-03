@@ -57,7 +57,19 @@
             //Adicion registro resultado validacion a historial
             array_push($history,$validation);        
         }
-        
+
+        if($addons<>null && is_array($addons)){
+            foreach($addons as $addon){
+                switch($addon['name']){
+                    case "route_absolute":
+                        $prefix="";
+                    break;
+                }
+            }
+        }else{
+            $prefix="../../../";
+        }
+
         /*
             1. array_unique(): Elimina los registros duplicados
             2. count(): Cuenta los elementos dentro de un arreglo
@@ -68,10 +80,10 @@
         */
         if(count(array_unique($history))==1 && array_unique($history)[0]==TRUE){
             if($success_route<>null){
-                header("Location: ../../../$success_route");
+                header("Location: $prefix$success_route");
             }
         }else{
-            header("Location: ../../../$failure_route");
+            header("Location: $prefix$failure_route");
         }
     
     } 
