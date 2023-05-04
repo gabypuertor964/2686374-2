@@ -29,5 +29,17 @@
 
     <title><?php echo($title_header)?></title>
 
+    <script>
+        function clonar_campos(contenedor_padre){
+            var input=document.getElementById(contenedor_padre).lastChild;
+            var input_clonado=input.cloneNode(TRUE);
+            document.getElementById(contenedor_padre).appendChild(input_clonado);
+        }
+
+        function hola(){
+            alert("HOla");
+        }
+    </script>
+
 </head>
 <body>

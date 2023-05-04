@@ -1,13 +1,16 @@
 <?php
     $_SESSION['title_header']="Ejercicio Operaciones";
     require("../../header.php");
-    require("../../../controllers/activity/operations/structures.php");
+    require("../../../addons/structures.php");
 ?>
 
     <!--Calculo Area Triangulo-->
     <?php
         forms_generate(
-            "triangle",
+            [
+               'route'=>"activity/operations/logistic.php",
+               'function'=>'triangle'
+            ],
             "Calcular Area del Triangulo",
             [
                 [
@@ -27,7 +30,10 @@
     <!--Retorno Dos Variables-->
     <?php
         forms_generate(
-            "variables_return",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"variables_return"
+            ],
             "Retorno de Variables",
             [
                 [
@@ -47,7 +53,10 @@
     <!--Potenciacion sin restricciones-->
     <?php
         forms_generate(
-            "empowerment",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"empowerment"
+            ],
             "Potenciacion",
             [
                 [
@@ -69,7 +78,10 @@
     <!--Conversion Euros a Dolares-->
     <?php
         forms_generate(
-            "trm",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"trm"
+            ],
             "Convertidor de Divisas (EUR - USD)",
             [
                 [
@@ -89,7 +101,10 @@
     <!--Calculo Area Rectangulo-->
     <?php
         forms_generate(
-            "rectangle",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"rectangle"
+            ],
             "Calcular Area del Rectangulo",
             [
                 [
@@ -109,7 +124,10 @@
     <!--Calculo Area y Perimetro de un cuadrado-->
     <?php
         forms_generate(
-            "square",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"square"
+            ],
             "Calcular Area y Perimetro de un cuadrado",
             [
                 [
@@ -125,7 +143,10 @@
     <!--Calculo Area y Volumen Cilindro-->
     <?php
         forms_generate(
-            "cylinder",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"cylinder"
+            ],
             "Calcular Area y Volumen del Cilindro",
             [
                 [
@@ -146,7 +167,10 @@
     <!--Calculo Longitud y Area Circunferencia-->
     <?php
         forms_generate(
-            "circle",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"circle"
+            ],            
             "Calcular Longitud y Area Circunferencia",
             [
                 [
@@ -162,7 +186,10 @@
     <!--Calculo Promedio 3 digitos-->
     <?php
         forms_generate(
-            "average",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"average"
+            ],
             "Calcular Promedio de 3 Numeros",
             [
                 [
@@ -189,7 +216,10 @@
     <!--Elevacion Potencia reales con naturales-->
     <?php
         forms_generate(
-            "empowerment_conditional",
+            [
+                'route'=>"activity/operations/logistic.php",
+                'function'=>"empowerment_conditional"
+            ],
             "Potenciacion de Reales con Enteros",
             [
                 [
