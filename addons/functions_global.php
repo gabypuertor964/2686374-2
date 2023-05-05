@@ -40,7 +40,15 @@
                     //Validacion Solo numerica (integer,double)
                     case "numeric":
                         if(is_numeric($valor)){
-                            $validation=TRUE;
+
+                            if(isset($element_validation[2])){
+                                $min=$element_validation[2];
+                                if($valor>$min){
+                                    $validation=TRUE;
+                                }
+                            }else{
+                                $validation=TRUE;
+                            }
                         }
                     break;
 

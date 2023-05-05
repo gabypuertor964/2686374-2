@@ -7,11 +7,15 @@
             return false;
         }
     }
-
+    
+    $id_row=0;
     function forms_generate($reception_route,$title_card,$data_inputs,$data_buttons,$data_card=null){
+        global $id_row;
 
         $route=$reception_route['route'];
         $function=$reception_route['function'];
+
+        $id_row++;
 
         if(validacion_existencia($data_card)){
             $acm_addon_card="";
@@ -28,14 +32,14 @@
         }
 
         $form="
-            <div class='container text-center'>        
-                <form action='../../../controllers/$route?function=$function'' method='post'>
-                    <div class='card' $acm_addon_card>
+            <div class='container text-center'>                        
+                    <div class='card'>
                         <div class='card-header'>
                             <h4 class='card-title'>$title_card</h4>
                         </div>
-                        <div class='card-body'>
-                            <div class='row'>
+                        <form action='../../../controllers/$route?function=$function'' method='post'>
+                            <div class='card-body' $acm_addon_card>
+                                <div class='row' id='row_$id_row'>
     
         ";
 
@@ -159,21 +163,29 @@
 
             if(isset($data_button['onclick'])){
                 $function_js=$data_button['onclick'];
-                $type="onclick='$function_js'";
+                $type=" type='button' onclick=$function_js";
             }else{
                 $type="type='submit'";
             }
 
+            if(isset($data_button['id'])){
+                $id=$data_button['id'];
+            }else{
+                $id="";
+            }
+
             $form.="
-                    <button $type class='btn btn-$btn_class col-md-$unit_col'>$text_button</button>
+                        <button $type id='$id' class='btn btn-$btn_class col-md-$unit_col'>$text_button</button>
+
+                    </form>
             ";
         }
 
         $form.="
-                                </div>        
-                            </div>
+                                    </div>        
+                                </div>
+                            
                         </div>
-                    </form>
                 </div>
         ";
 
