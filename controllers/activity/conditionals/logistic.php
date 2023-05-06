@@ -230,29 +230,47 @@
         global $ruta_retorno;
         global $ruta_result;
 
+        type_validation(
+            [
+                [$nombre,'string'],
+                [$horas_trabajadas,'numeric']
+            ],
+            $ruta_retorno
+        );
+
         $valor_hora=40000;
 
         if($horas_trabajadas>48){
             $horas_extra=$horas_trabajadas-48;
+            $horas_estandar=48;
 
-            $salario_base=48*$valor_hora;
-            $salario_extra=$horas_extra*$valor_hora;
-
-            $salario=$salario_base+$salario_extra;
+            $salario_base=$horas_estandar*$valor_hora;
+            $salario_extra=$horas_extra*$valor_hora*2;
         }else{
-            $salario=$horas_trabajadas*$valor_hora;
+            $horas_extra=0;
+            $horas_estandar=$horas_trabajadas;
+
+            $salario_base=$horas_estandar*$valor_hora;
+            $salario_extra=0;
         }
+
+        $salario=$salario_base+$salario_extra;
 
         session_start();
         $data=[
-            'title_header'=>"Identificar Mayor",
-            'title'=>"Identificar el numero mayor",
+            'title_header'=>"Salario trabajador",
+            'title'=>"Conocer el Salario del Trabajador",
             'thead'=>[
                 'Dato',
                 'Valor Ingresado'
             ],
             'rows'=>[
-                ['Primer Numero',$salario]
+                ['Nombre',$nombre],
+                ['Horas Estandar', $horas_estandar],
+                ['Salario Base', "$ $salario_base"],
+                ['Horas Extra',$horas_extra],
+                ['Valor horas Extra',"$ $salario_extra"],
+                ['Total',"$ $salario"]
             ],
             'addons'=>[
                 [
@@ -271,6 +289,72 @@
             $ruta_retorno,
             $ruta_result
         );
+    }
+
+    function quotient($dividendo,$divisor){
+        global $ruta_retorno;
+        global $ruta_result;
+
+        type_validation(
+            [
+                [$divisor,"numeric",0]
+            ],
+            $ruta_retorno
+        );
+
+        $cociente=$dividendo/$divisor;
+        
+        if(is_float($cociente)){
+            $separacion=explode(".",$cociente);
+
+            //Obtencion Parte entera del cociente
+            $parte_entera=$separacion[0];
+
+            //Obtencion Parte decimal del cociente (Corresponde al residuo)
+            $parte_decimal=$cociente-$parte_entera;
+
+            //Sobreescritura valor cociente para su conversion a entero
+            $cociente=$cociente-$parte_decimal;
+
+            //Obtencion del residuo entero
+            $residuo=$parte_decimal*$divisor;                
+        }else{
+            $residuo=0;
+        }
+        
+        session_start();
+        $data=[
+            'title_header'=>"Detallado Division",
+            'title'=>"Detallado division entre A y B",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Dividendo', $dividendo],
+                ['Divisor',$divisor],
+                ['Cociente',$cociente],
+                ['Residuo',$residuo]
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [$dividendo,"numeric"],
+                [$data,'all']
+            ],
+            $ruta_retorno,
+            $ruta_result
+        );
+
     }
 
     switch($_GET['function']){
@@ -300,6 +384,13 @@
             $horas_trabajadas=recuperacion_post("horas_trabajadas");
 
             salary($nombre,$horas_trabajadas);
+        break;
+
+        case 'quotient':
+            $dividendo=recuperacion_post("numero_a");
+            $divisor=recuperacion_post("numero_b");
+
+            quotient($dividendo,$divisor);
         break;
     }
 

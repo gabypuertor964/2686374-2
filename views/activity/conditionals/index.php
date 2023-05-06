@@ -7,7 +7,6 @@
 <?php
 
     //Construya el código para saber si un número es positivo o negativo.
-    //Construya el código para saber si un número es positivo o negativo.
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
@@ -114,23 +113,25 @@
         ]
     );
 
-    //Dados dos números A y B encontrar el cociente entre A y B. Recordar que la división por cero no está definida, en ese caso debe aparecer una leyenda anunciando que la división n es posible.
+    //Dados dos números A y B encontrar el cociente entre A y B. Recordar que la división por cero no está definida, en ese caso debe aparecer una leyenda anunciando que la división no es posible.
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
-            'function'=>'cociente'
+            'function'=>'quotient'
         ],
         'Conocer el cociente de la division entre A y B',
         [
             [
                 'label'=>'Numero A',
                 'type'=>'float',
-                'name'=>'numero_a'
+                'name'=>'numero_a',
+                'placeholder'=>'Inserte el dividendo'
             ],
             [
                 'label'=>'Numero B',
                 'type'=>'float',
-                'name'=>'numero_b'
+                'name'=>'numero_b',
+                'placeholder'=>'Inserte el divisor'
             ],
         ],
         [
