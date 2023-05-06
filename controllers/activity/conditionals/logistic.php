@@ -357,6 +357,81 @@
 
     }
 
+    function day_week($num_day){
+
+        global $ruta_retorno;
+        global $ruta_result;
+
+        switch($num_day){
+            case 1:
+                $dia="Lunes";
+            break;
+
+            case 2:
+                $dia="Martes";
+            break;
+
+            case 3:
+                $dia="Miercoles";
+            break;
+
+            case 4:
+                $dia="Jueves";
+            break;
+
+            case 5:
+                $dia="Viernes";
+            break;
+
+            case 6:
+                $dia="Sabado";
+            break;
+
+            case 7:
+                $dia="Domingo";
+            break;
+        }
+        
+        session_start();
+        $data=[
+            'title_header'=>"Dia Semana",
+            'title'=>"Identificador Dia de la semana",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Numero del dia', $num_day],
+                ['Nombre del dia',$dia]
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [
+                    $num_day,
+                    "integer",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',7]
+                    ]
+                ],
+                [$data,'all']
+            ],
+            $ruta_retorno,
+            $ruta_result
+        );
+        
+    }
+
     switch($_GET['function']){
         case 'positive_negative':
             $numero=recuperacion_post("numero");
@@ -391,6 +466,12 @@
             $divisor=recuperacion_post("numero_b");
 
             quotient($dividendo,$divisor);
+        break;
+
+        case 'day_week':
+            $num_day=recuperacion_post("num_dia");
+
+            day_week($num_day);
         break;
     }
 

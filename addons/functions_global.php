@@ -40,15 +40,7 @@
                     //Validacion Solo numerica (integer,double)
                     case "numeric":
                         if(is_numeric($valor)){
-
-                            if(isset($element_validation[2])){
-                                $min=$element_validation[2];
-                                if($valor>$min){
-                                    $validation=TRUE;
-                                }
-                            }else{
-                                $validation=TRUE;
-                            }
+                            $validation=TRUE;
                         }
                     break;
 
@@ -60,6 +52,52 @@
                     break;
                 }
 
+                
+                
+                if(isset($element_validation[2])){
+                    $addons_validation=$element_validation[2];
+                    $history_addons=[];
+                    
+
+                    foreach($addons_validation as $addon){
+                        $validation_addons=FALSE;
+                        $name_addon=$addon[0];
+                        $value_addon=$addon[1];
+
+                        switch($name_addon){
+                            case 'min':
+                                if($valor>$value_addon){
+                                    $validation_addons=TRUE;
+                                }
+                            break;
+
+                            case 'min_equal':
+                                if($valor>=$value_addon){
+                                    $validation_addons=TRUE;
+                                }
+                            break;
+
+                            case 'max_equal':
+                                if($valor<=$value_addon){
+                                    $validation_addons=TRUE;
+                                }
+                            break;
+
+                            case 'max':
+                                if($valor<$value_addon){
+                                    $validation_addons=TRUE;
+                                }
+                            break;
+                        }
+
+                        array_push($history_addons,$validation_addons);
+                    }
+
+                    if(!(count(array_unique($history_addons))==1 && array_unique($history_addons)[0]==TRUE)){
+                        $validation=FALSE;   
+                    }
+                }
+                
             }
             
             //Adicion registro resultado validacion a historial

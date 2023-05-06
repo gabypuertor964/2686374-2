@@ -145,7 +145,7 @@
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
-            'function'=>'dia_semana'
+            'function'=>'day_week'
         ],
         'Identificar el dia de la Semana',
         [
