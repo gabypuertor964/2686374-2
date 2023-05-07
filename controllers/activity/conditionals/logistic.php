@@ -12,9 +12,12 @@
 
         if($numero>0){
             $signo="Positivo";
-        }else{
+        }elseif($numero<0){
             $signo="Negativo";
+        }else{
+            $signo="No tiene Signo";
         }
+
 
         session_start();
         $data=[
@@ -432,6 +435,219 @@
         
     }
 
+    function operations($num_a,$num_b){
+        global $ruta_retorno;
+        global $ruta_result;
+
+        type_validation(
+            [
+                [$num_a,"numeric"],
+                [$num_b,"numeric"],
+            ],  
+            $ruta_retorno
+        );
+
+        if($num_a<0 OR $num_b<0){
+            $operacion="Suma";
+            $resultado=$num_a+$num_b;
+        }else{
+            $operacion="Multiplicacion";
+            $resultado=$num_a*$num_b;
+        }
+
+        session_start();
+        $data=[
+            'title_header'=>"Operaciones Aritmeticas",
+            'title'=>"Operaciones Aritmeticas segun el signo",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Numero A', $num_a],
+                ['Numero B', $num_b],
+                ['Operacion', $operacion],
+                ['Resultado',$resultado]
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [$num_a,"numeric"],
+                [$num_b,"numeric"],
+                [$data,'all']
+            ],
+            $ruta_retorno,
+            $ruta_result
+        );
+
+
+        
+    }
+
+    function sign($dia,$mes){
+        global $ruta_retorno;
+        global $ruta_result;        
+
+        type_validation(
+            [
+                [
+                    $dia,
+                    "integer",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',31]
+                    ]
+                ],
+                [
+                    $mes,
+                    "integer",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',12]
+                    ]
+                ]
+            ],
+            $ruta_retorno
+        );
+        
+        $numeric_date=($mes.$dia.)*1;
+
+        if($numeric_date>=2103 && $numeric_date<=1904){
+
+            $signo="Aries";
+            $limite_inferior="21 de Marzo";
+            $limite_superior="19 de Abril";
+
+        }elseif($numeric_date>=2004 && $numeric_date<=2005){
+
+            $signo="Tauro";
+            $limite_inferior="20 de Abril";
+            $limite_superior="20 de Mayo";
+
+        }elseif($numeric_date>=2105 && $numeric_date<=2006){
+
+            $signo="Geminis";
+            $limite_inferior="21 de Mayo";
+            $limite_superior="20 de Abril";
+
+        }elseif($numeric_date>=2106 && $numeric_date<=2207){
+
+            $signo="Cancer";
+            $limite_inferior="21 de Junio";
+            $limite_superior="22 de Julio";
+
+        }elseif($numeric_date>=2307 && $numeric_date<=2208){
+
+            $signo="Leo";
+            $limite_inferior="21 de Julio";
+            $limite_superior="22 de Agosto";
+
+        }elseif($numeric_date>=2308 && $numeric_date<=2209){
+
+            $signo="Virgo";
+            $limite_inferior="23 de Agosto";
+            $limite_superior="22 de Septiembre";
+            
+        }elseif($numeric_date>=2309 && $numeric_date<=2210){
+
+            $signo="Libra";
+            $limite_inferior="23 de Septiembre";
+            $limite_superior="22 de Octubre";
+            
+        }elseif($numeric_date>=2310 && $numeric_date<=2111){
+
+            $signo="Escorpio";
+            $limite_inferior="23 de Octubre";
+            $limite_superior="21 de Noviembre";
+            
+        }elseif($numeric_date>=2211 && $numeric_date<=2112){
+
+            $signo="Sagitario";
+            $limite_inferior="22 de Noviembre";
+            $limite_superior="21 de Diciembre";
+            
+        }elseif($numeric_date>=2212 && $numeric_date<=1901){
+
+            $signo="Sagitario";
+            $limite_inferior="22 de Diciembre";
+            $limite_superior="19 de Enero";
+            
+        }elseif($numeric_date>=2001 && $numeric_date<=1802){
+
+            $signo="Acuario";
+            $limite_inferior="20 de Enero";
+            $limite_superior="18 de Febrero";
+            
+        }elseif($numeric_date>=1902 && $numeric_date<=2003){
+
+            $signo="Piscis";
+            $limite_inferior="29 de Febrero";
+            $limite_superior="20 de Marzo";
+            
+        }else{
+            echo($numeric_date);
+        }
+
+        /*['Fecha Inicial Signo',$limite_inferior],session_start();
+        $data=[
+            'title_header'=>"Signo Sodiacal",
+            'title'=>"Identificar El signo sodiacal",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Numero del dia', $dia],
+                ['Numero del Mes',$mes],
+                ['Signo Sodiacal',$signo],
+                ['Fecha Inicial Signo',$limite_inferior],
+                ['Fecha Final Signo',$limite_superior],
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [
+                    $dia,
+                    "integer",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',31]
+                    ]
+                ],
+                [
+                    $mes,
+                    "integer",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',12]
+                    ]
+                ],
+                [$data,'all']
+            ],
+            $ruta_retorno,
+            $ruta_result
+        );*/
+        
+    }
+
     switch($_GET['function']){
         case 'positive_negative':
             $numero=recuperacion_post("numero");
@@ -472,6 +688,20 @@
             $num_day=recuperacion_post("num_dia");
 
             day_week($num_day);
+        break;
+
+        case 'operations':
+            $num_a=recuperacion_post("numero_a");
+            $num_b=recuperacion_post("numero_b");
+
+            operations($num_a,$num_b);
+        break;
+
+        case "sign":
+            $dia=recuperacion_post("dia_nacimiento");
+            $mes=recuperacion_post("mes_nacimiento");
+
+            sign($dia,$mes);
         break;
     }
 

@@ -166,7 +166,7 @@
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
-            'function'=>'operaciones'
+            'function'=>'operations'
         ],
         'Suma o Multiplicacion entre el numero A y B',
         [
@@ -194,7 +194,7 @@
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
-            'function'=>'signo'
+            'function'=>'sign'
         ],
         'Identificar el signo sodiacal segun fecha de Nacimiento',
         [
