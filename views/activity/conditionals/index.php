@@ -220,7 +220,7 @@
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
-            'function'=>'descuento'
+            'function'=>'discount'
         ],
         'Procesar descuento sabiendo el precio total',
         [
@@ -241,7 +241,7 @@
     forms_generate(
         [
             'route'=>"activity/conditionals/logistic.php",
-            'function'=>'clasificacion_nacimientos'
+            'function'=>'classify_births'
         ],
         'Clasificar Nacimientos',
         [
@@ -267,7 +267,7 @@
                     'Masculino',
                     'Femenino'
                 ],
-                'name'=>'sexo[]'
+                'name'=>'sexo_nacimiento[]'
             ],
         ],
         [

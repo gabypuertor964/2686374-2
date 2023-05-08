@@ -4,8 +4,8 @@
 
     $ruta_retorno="views/activity/conditionals";
     $ruta_result="views/result.php";
-    type_validation([[$_GET['function'],"all"]],$ruta_retorno);
-    
+    //type_validation([[$_GET['function'],"all"]],$ruta_retorno);
+        
     function positive_negative($numero){
         global $ruta_retorno;
         global $ruta_result;
@@ -519,98 +519,98 @@
             $ruta_retorno
         );
         
-        $numeric_date=($mes.$dia.)*1;
+        //Adicion Ceros a la izquierda en caso de que el numero de dia sea de una sola cifra
+        if(strlen($dia)==1){
+            $dia="0".$dia;
+        }
 
-        if($numeric_date>=2103 && $numeric_date<=1904){
+        //Concatenacion fecha y dia
+        $date=create_date($dia,$mes);
+
+        if($date>=create_date(21,03) && $date<=create_date(19,04)){
 
             $signo="Aries";
             $limite_inferior="21 de Marzo";
             $limite_superior="19 de Abril";
 
-        }elseif($numeric_date>=2004 && $numeric_date<=2005){
+        }elseif($date>=create_date(20,4) && $date<=create_date(20,5)){
 
             $signo="Tauro";
             $limite_inferior="20 de Abril";
             $limite_superior="20 de Mayo";
 
-        }elseif($numeric_date>=2105 && $numeric_date<=2006){
+        }elseif($date>=create_date(21,5) && $date<=create_date(20,6)){
 
             $signo="Geminis";
             $limite_inferior="21 de Mayo";
             $limite_superior="20 de Abril";
 
-        }elseif($numeric_date>=2106 && $numeric_date<=2207){
+        }elseif($date>=create_date(21,6) && $date<=create_date(22,7)){
 
             $signo="Cancer";
             $limite_inferior="21 de Junio";
             $limite_superior="22 de Julio";
 
-        }elseif($numeric_date>=2307 && $numeric_date<=2208){
+        }elseif($date>=create_date(23,7) && $date<=create_date(22,8)){
 
             $signo="Leo";
             $limite_inferior="21 de Julio";
             $limite_superior="22 de Agosto";
 
-        }elseif($numeric_date>=2308 && $numeric_date<=2209){
+        }elseif($date>=create_date(23,8) && $date<=create_date(22,9)){
 
             $signo="Virgo";
             $limite_inferior="23 de Agosto";
             $limite_superior="22 de Septiembre";
             
-        }elseif($numeric_date>=2309 && $numeric_date<=2210){
+        }elseif($date>=create_date(23,9) && $date<=create_date(22,10)){
 
             $signo="Libra";
             $limite_inferior="23 de Septiembre";
             $limite_superior="22 de Octubre";
             
-        }elseif($numeric_date>=2310 && $numeric_date<=2111){
+        }elseif($date>=create_date(23,10) && $date<=create_date(21,11)){
 
             $signo="Escorpio";
             $limite_inferior="23 de Octubre";
             $limite_superior="21 de Noviembre";
             
-        }elseif($numeric_date>=2211 && $numeric_date<=2112){
+        }elseif($date>=create_date(22,11) && $date<=create_date(21,12)){
 
             $signo="Sagitario";
             $limite_inferior="22 de Noviembre";
             $limite_superior="21 de Diciembre";
-            
-        }elseif($numeric_date>=2212 && $numeric_date<=1901){
 
-            $signo="Sagitario";
-            $limite_inferior="22 de Diciembre";
-            $limite_superior="19 de Enero";
-            
-        }elseif($numeric_date>=2001 && $numeric_date<=1802){
+        }elseif($date>=create_date(20,1) && $date<=create_date(18,2)){
 
             $signo="Acuario";
             $limite_inferior="20 de Enero";
             $limite_superior="18 de Febrero";
-            
-        }elseif($numeric_date>=1902 && $numeric_date<=2003){
+
+        }elseif($date>=create_date(19,2) && $date<=create_date(20,3)){
 
             $signo="Piscis";
             $limite_inferior="29 de Febrero";
             $limite_superior="20 de Marzo";
-            
+
         }else{
-            echo($numeric_date);
+            redireccion_rapida($ruta_retorno);
         }
 
-        /*['Fecha Inicial Signo',$limite_inferior],session_start();
+        session_start();
         $data=[
-            'title_header'=>"Signo Sodiacal",
-            'title'=>"Identificar El signo sodiacal",
+            'title_header'=>"Signo Zodiacal",
+            'title'=>"Conocer el signo zodical",
             'thead'=>[
                 'Dato',
                 'Valor Ingresado'
             ],
             'rows'=>[
-                ['Numero del dia', $dia],
-                ['Numero del Mes',$mes],
-                ['Signo Sodiacal',$signo],
-                ['Fecha Inicial Signo',$limite_inferior],
-                ['Fecha Final Signo',$limite_superior],
+                ['Dia Nacimiento', $dia],
+                ['Mes de Nacimiento', $mes],
+                ['Signo Zodiacal', $signo],
+                ['Limite Inferior',$limite_inferior],
+                ['Limite Superior',$limite_superior],
             ],
             'addons'=>[
                 [
@@ -644,8 +644,128 @@
             ],
             $ruta_retorno,
             $ruta_result
-        );*/
+        );
         
+    }
+
+    function discount($precio){
+        global $ruta_result;
+        global $ruta_retorno;
+
+        type_validation(
+            [
+                [$precio,"numeric"]
+            ],
+            $ruta_retorno
+        );
+
+        if($precio<100000){
+            $descuento=5;
+        }elseif($precio>=100000 && $precio<200000){  
+            $descuento=10;
+        }else{
+            $descuento=15;
+        }
+
+        $valor_final=$precio-($precio*($descuento/100));
+
+        session_start();
+        $data=[
+            'title_header'=>"Descuentos",
+            'title'=>"Aplicar escuento segun el precio",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Precio Inicial', "$$precio"],
+                ['Descuento',"$descuento%"],
+                ['Valor Final',"$$valor_final"],
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [$precio,"numeric"],
+                [$data,'all']
+            ],
+            $ruta_retorno,
+            $ruta_result
+        );
+
+    }
+
+    function classify_births($days,$moths,$years,$genders){
+        global $ruta_result;
+        global $ruta_retorno;
+
+        type_validation(
+            [
+                [
+                    $days,
+                    "array",
+                    [
+                        ['min',1]
+                    ]
+                ]
+            ],
+            $ruta_retorno
+        );
+
+        $male=0;
+        $female=0;
+
+        foreach($genders as $gender){
+            if($gender=="masculino"){
+                $male++;
+            }elseif($gender=="femenino"){
+                $female++;
+            }
+        }
+
+        /*session_start();
+        $data=[
+            'title_header'=>"Clasificacion Nacimientos",
+            'title'=>"Clasificacion de Nacimientos por Sexo",
+            'thead'=>[
+                'Dato',
+                'Valor Ingresado'
+            ],
+            'rows'=>[
+                ['Sexo Masculino',$male],
+                ['Sexo Femenino',$female],
+                ['Total Nacimientos',count($genders)],
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ]
+        ];
+
+        $_SESSION['data']=$data;
+
+        type_validation(
+            [
+                [$days,"array"],
+                [$moths,"array"],
+                [$years,"array"],
+                [$genders,"array"],
+                [$data,'all']
+            ],
+            $ruta_retorno,
+            $ruta_result
+        );*/
+
     }
 
     switch($_GET['function']){
@@ -703,7 +823,25 @@
 
             sign($dia,$mes);
         break;
-    }
 
+        case "discount":
+            $precio=recuperacion_post("precio");
     
+            discount($precio);
+        break;
+
+        case "classify_births":
+            $days=recuperacion_post("dia_nacimiento");
+            $moths=recuperacion_post("mes_nacimiento");
+            $years=recuperacion_post("año_nacimiento");
+            $genders=recuperacion_post("sexo_nacimiento");
+            
+            classify_births($days,$moths,$years,$genders);
+        break;
+
+        default:
+            redireccion_rapida($ruta_retorno);
+        break;
+
+    }
 ?>

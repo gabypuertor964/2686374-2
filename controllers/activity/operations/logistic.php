@@ -591,7 +591,7 @@
 
         //En caso de que el valor enviado por la variable GET, no represente una funcion definida, este enviara al usuario nuevamente a la pagina de formularios
         default:
-            header("Location: ../../../$ruta_retorno");
+            redireccion_rapida($ruta_retorno);
         break;
 
 
