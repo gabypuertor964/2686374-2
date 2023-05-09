@@ -10,18 +10,21 @@
         [
             [$data,"all"]
         ],
-        "../",
-        "",
-        [
-            [
-                'name'=>'route_absoute',
-                TRUE
-            ]
-        ]
+        "../"
     );
 
     $_SESSION['title_header']=$data['title_header'];
-    $_SESSION['addons']=$data['addons'];
+
+    if(isset($data['addons'])){
+        $_SESSION['addons']=$data['addons'];
+    }else{
+        $_SESSION['addons']=[
+            [
+                'name'=>"prefix_route",
+                'value'=>'../'
+            ]
+        ];
+    }
 
     require("header.php");
 ?>
@@ -66,7 +69,9 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary col-md-12" href="../" role="button">Regresar al menu principal</a>
+    <a class="btn btn-primary col-md-12" href="../<?php echo($data['route_return'])?>" role="button">Regresar</a>
+
+    
 </div>
 
 

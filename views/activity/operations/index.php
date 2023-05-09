@@ -23,7 +23,11 @@
                     'name'=>"altura_triangulo"
                 ]
             ],
-            "Calcular"
+            [
+                [
+                    'text'=>'Identificar'
+                ]
+            ]
         );
     ?>
 
@@ -46,7 +50,11 @@
                     'type'=>"text"
                 ]
             ],
-            "Retornar"
+            [
+                [
+                    'text'=>'Retornar'
+                ]
+            ]
         );
     ?>
 
@@ -71,7 +79,11 @@
                     'min'=>2
                 ]
             ],
-            "Calcular"
+        [
+            [
+                'text'=>'Identificar'
+            ]
+        ]
         );
     ?>
 
@@ -94,7 +106,11 @@
                     'type'=>"float"
                 ]
             ],
-            "Convertir"
+            [
+                [
+                    'text'=>'Convertir'
+                ]
+            ]
         );
     ?>
 
@@ -117,7 +133,11 @@
                     'type'=>"float"
                 ]
             ],
-            "Calcular"
+            [
+                [
+                    'text'=>'Identificar'
+                ]
+            ]
         );
     ?>
 
@@ -136,7 +156,11 @@
                     'type'=>"float"
                 ]
             ],
-            "Calcular"
+            [
+                [
+                    'text'=>'Identificar'
+                ]
+            ]
         );
     ?>
 
@@ -160,7 +184,11 @@
                     'type'=>"float"
                 ]
             ],
-            "Calcular"
+            [
+                [
+                    'text'=>'Identificar'
+                ]
+            ]
         );
     ?>
 
@@ -179,7 +207,11 @@
                     'type'=>"float"
                 ]
             ],
-            "Calcular"
+            [
+                [
+                    'text'=>'Identificar'
+                ]
+            ]
         );
     ?>
 
@@ -209,7 +241,11 @@
                 ]
 
             ],
-            "Promediar"
+            [
+                [
+                    'text'=>'Promediar'
+                ]
+            ]
         );
     ?>
 
@@ -233,13 +269,23 @@
                     'type'=>"number",
                 ]
             ],
-            "Calcular"
+            [
+                [
+                    'text'=>'Identificar'
+                ]
+            ]
         );
-    ?>
+?>
+
+<div class="container" class="button_home">
+    <a name="" id="" class="btn btn-success col-md-12" style="margin: 10px 0px 10px 0px;" href="../../../" role="button">Regresar al menu principal
+    </a>
+</div>
 
 <?php
     require("../../footer.php");
 ?>
+    
 
 
 

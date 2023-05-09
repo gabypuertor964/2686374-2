@@ -10,19 +10,69 @@
     ];
 
     require("views/header.php");
+    require("addons/structures.php");
 ?>
-    <div class="container text-center">
 
-        <a class="btn btn-primary col-md-12" href="views/activity/operations/index.php" role="button">Actividad Operaciones</a>
+    <section class="text-center">
+        <h1 id="home_title">Apuntes Desarrollo Web en PHP</h1>
+    </section>
 
-    </div>
+    <table class="table table-striped">
+            <?php
+                links_home(
+                [
+                    //Link Actividad en clase (25-04-23): Operadores aritmeticos y Ejercicio Salario
+                    [
+                        'card_title'=>'Actividad Operaciones Artimeticas',
+                        'description'=>'Esta actividad se realiza con el fin de repasar los operadores aritmeticos junto con su aplicacion en los ciclos de control',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'classnotes',
+                            'route'=>'25-04-23/'
+                        ]
+                    ],
 
-    <div class="container">
+                    //Link Tarea: Operadores Aritmeticos y Ejercicios
+                    [
+                        'card_title'=>'Actividad Operadores',
+                        'description'=>'Esta actividad se realiza con el fin de aplicar de manera mas profunda el concepto de operadores logicos y aritmeticos, asi como su implementacion en estructuras de control con un mayor nivel de dificultad',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'activity',
+                            'route'=>'operations/'
+                        ]
+                    ],
 
-        <a class="btn btn-primary col-md-12" href="views/classnotes/25-04-23/index.php" role="button">Actividad Salario</a>
+                    //Link Tarea: Condicionales y Ejercicios
+                    [
+                        'card_title'=>'Actividad Condicionales',
+                        'description'=>'Esta actividad se realiza con el fin de aplicar de manera mas profunda el concepto condicionales, tanto simples como anidados, asi como su implementacion en estrucutras de control de tamaño aun mayor',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'activity',
+                            'route'=>'conditionals/'
+                        ]
+                    ]
+                ]
+            );
+        ?>
         
-    </div>
-
+    </table>
 <?php
     require("views/footer.php");
 ?>

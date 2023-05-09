@@ -40,7 +40,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -86,7 +87,8 @@
                     'name'=>'prefix_route',
                     'value'=>'../'
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -137,7 +139,8 @@
                     'name'=>'prefix_route',
                     'value'=>'../'
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -185,7 +188,8 @@
                     'name'=>'prefix_route',
                     'value'=>'../'
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         session_start();
@@ -237,7 +241,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -290,7 +295,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -343,7 +349,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -395,7 +402,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -445,7 +453,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -498,7 +507,8 @@
                     'name'=>'prefix_route',
                     'value'=>'../'
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;

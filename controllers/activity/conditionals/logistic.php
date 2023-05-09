@@ -4,7 +4,7 @@
 
     $ruta_retorno="views/activity/conditionals";
     $ruta_result="views/result.php";
-    //type_validation([[$_GET['function'],"all"]],$ruta_retorno);
+    type_validation([[$_GET['function'],"all"]],$ruta_retorno);
         
     function positive_negative($numero){
         global $ruta_retorno;
@@ -36,7 +36,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -95,7 +96,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -210,7 +212,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -280,7 +283,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -344,7 +348,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -412,7 +417,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -474,7 +480,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -617,7 +624,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -687,7 +695,8 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
@@ -713,9 +722,31 @@
                     $days,
                     "array",
                     [
-                        ['min',1]
+                        ['min_equal',1],
+                        ['max_equal',31]
                     ]
+                ],
+                [
+                    $moths,
+                    "array",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',12]
+                    ]
+                ],
+                [
+                    $years,
+                    "array",
+                    [
+                        ['min_equal',2004],
+                        ['max_equal',date('Y')]
+                    ]
+                ],
+                [
+                    $genders,
+                    "array"
                 ]
+
             ],
             $ruta_retorno
         );
@@ -731,7 +762,7 @@
             }
         }
 
-        /*session_start();
+        session_start();
         $data=[
             'title_header'=>"Clasificacion Nacimientos",
             'title'=>"Clasificacion de Nacimientos por Sexo",
@@ -749,22 +780,47 @@
                     'name'=>"prefix_route",
                     'value'=>"../"
                 ]
-            ]
+            ],
+            'route_return'=>$ruta_retorno
         ];
 
         $_SESSION['data']=$data;
 
         type_validation(
             [
-                [$days,"array"],
-                [$moths,"array"],
-                [$years,"array"],
-                [$genders,"array"],
+                [
+                    $days,
+                    "array",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',31]
+                    ]
+                ],
+                [
+                    $moths,
+                    "array",
+                    [
+                        ['min_equal',1],
+                        ['max_equal',12]
+                    ]
+                ],
+                [
+                    $years,
+                    "array",
+                    [
+                        ['min_equal',2004],
+                        ['max_equal',date('Y')]
+                    ]
+                ],
+                [
+                    $genders,
+                    "array"
+                ],
                 [$data,'all']
             ],
             $ruta_retorno,
             $ruta_result
-        );*/
+        );
 
     }
 

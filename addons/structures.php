@@ -8,7 +8,7 @@
         }
     }
     
-    $id_row=0;
+    
     function forms_generate($reception_route,$title_card,$data_inputs,$data_buttons,$data_card=null){
         global $id_row;
 
@@ -37,7 +37,7 @@
                         <div class='card-header'>
                             <h4 class='card-title'>$title_card</h4>
                         </div>
-                        <form action='../../../controllers/$route?function=$function'' method='post'>
+                        <form action='../../../controllers/$route?function=$function' method='post'>
                             <div class='card-body' $acm_addon_card>
                                 <div class='row' id='row_$id_row'>
     
@@ -190,6 +190,63 @@
         ";
 
         echo($form);
+
+    }
+
+    function links_home($data_cards){
+     
+
+        foreach($data_cards as $card){
+            $card_litle=$card['card_title'];
+            $description=$card['description'];
+            $buttons=$card['buttons'];
+
+            $route=$card['data_route'];
+            
+            $type_page=$route['type_page'];
+            $prefix="views/$type_page";
+
+            $route=$route['route'];
+            
+            $row_button=12/(count($buttons));
+
+            $card=("
+                <td>
+                    <div class='card col-md-12 text-center'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$card_litle</h5>
+                            <p class='card-text'>$description</p>
+            ");
+
+            foreach($buttons as $button){
+                
+                $text=$button['text'];
+                if(isset($button['btn_class'])){
+                    $btn_class=$button['btn_class'];
+                }else{
+                    $btn_class="primary";
+                }
+
+                $card.="
+                    <a name='' id='' class='btn btn-$btn_class col-md-$row_button' href='$prefix/$route' role='button'>$text</a>
+                ";
+
+            }
+
+            $card.="
+                            </div>
+                        </div>
+                    </td>
+            ";
+
+            echo(
+            "
+                <tr class='col-md-12'>
+                    $card
+                </tr>
+            ");
+            
+        }
 
     }
 

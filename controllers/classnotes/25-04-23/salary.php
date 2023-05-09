@@ -35,7 +35,8 @@
             ['Horas Dias trabajadas',$cantidad_horas],
             ['Valor Hora',"$$valor_hora"],
             ['Salario total',"$$salario_total"],
-        ]
+        ],
+        'route_return'=>'views/classnotes/25-04-23'
     ];
 
     $_SESSION['data']=$data;

@@ -6,6 +6,7 @@
     if(isset($_SESSION['addons'])){
 
         $addons=$_SESSION['addons'];
+
         foreach($addons as $addon){
             switch($addon['name']){
                 case "prefix_route":
@@ -13,6 +14,7 @@
                 break;
             }
         }
+        
     }
     
 ?>

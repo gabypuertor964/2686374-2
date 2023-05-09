@@ -98,12 +98,15 @@
                                         }
                                     }
 
+                                    
+
                                     if((
                                         count(array_unique($history_array_addons))==1 && 
                                         
                                         array_unique($history_array_addons)[0]==TRUE
                                     )){
                                         $validation_addons=TRUE;
+                                    
                                     }
 
                                 }else{
@@ -115,20 +118,93 @@
                             break;
 
                             case 'min_equal':
-                                if($valor>=$value_addon){
-                                    $validation_addons=TRUE;
+                                if(is_array($valor)){
+
+                                    $history_array_addons=[];
+
+                                    foreach($valor as $item){
+                                        if($item>=$value_addon){
+                                            array_push($history_array_addons,TRUE);
+                                        }else{
+                                            array_push($history_array_addons,FALSE); 
+                                        }
+                                    }
+
+                                    if((
+                                        count(array_unique($history_array_addons))==1 && 
+                                        
+                                        array_unique($history_array_addons)[0]==TRUE
+                                    )){
+                                        $validation_addons=TRUE;
+                                    
+                                    }
+
+                                }else{
+                                    if($valor>=$value_addon){
+                                        $validation_addons=TRUE;
+                                    }
                                 }
                             break;
 
                             case 'max_equal':
-                                if($valor<=$value_addon){
-                                    $validation_addons=TRUE;
+                                if(is_array($valor)){
+
+                                    $history_array_addons=[];
+
+                                    foreach($valor as $item){
+                                        if($item<=$value_addon){
+                                            array_push($history_array_addons,TRUE);
+                                        }else{
+                                            array_push($history_array_addons,FALSE); 
+                                        }
+                                    }
+
+                                    if((
+                                        count(array_unique($history_array_addons))==1 && 
+                                        
+                                        array_unique($history_array_addons)[0]==TRUE
+                                    )){
+                                        $validation_addons=TRUE;
+                                    
+                                    }
+
+                                }else{
+                                    if($valor<=$value_addon){
+                                        $validation_addons=TRUE;
+                                    }
                                 }
                             break;
 
                             case 'max':
-                                if($valor<$value_addon){
-                                    $validation_addons=TRUE;
+                                if(is_array($valor)){
+
+                                    $history_array_addons=[];
+
+                                    foreach($valor as $item){
+                                        if($item<$value_addon){
+                                            array_push($history_array_addons,TRUE);
+                                        }else{
+                                            array_push($history_array_addons,FALSE); 
+                                        }
+                                    }
+
+                                    
+
+                                    if((
+                                        count(array_unique($history_array_addons))==1 && 
+                                        
+                                        array_unique($history_array_addons)[0]==TRUE
+                                    )){
+                                        $validation_addons=TRUE;
+                                    
+                                    }
+
+                                    echo(var_dump($validation_addons)."<br>");
+
+                                }else{
+                                    if($valor<$value_addon){
+                                        $validation_addons=TRUE;
+                                    }
                                 }
                             break;
                         }
@@ -145,16 +221,9 @@
                 
             }
 
-            echo(var_dump($element_validation)."<br>");
-            echo(var_dump($validation)."<br>");
-            echo("<br>");
-            
             //Adicion registro resultado validacion a historial
             array_push($history,$validation);    
-            
-            echo(var_dump($element_validation)."<br>");
-            echo(var_dump($history)."<br>");
-            echo("<br>");
+
         }
 
         if($addons<>null && is_array($addons)){
@@ -179,13 +248,13 @@
 
             Asi mismo en caso de solo quedar un valor, se valida que este sea VERDADERO
         */
-
+    
         if(count(array_unique($history))==1 && array_unique($history)[0]==TRUE){
             if($success_route<>null){
-                //header("Location: $prefix$success_route");
+                header("Location: $prefix$success_route");
             }
         }else{
-            //header("Location: $prefix$failure_route");
+            header("Location: $prefix$failure_route");
         }
     
     }

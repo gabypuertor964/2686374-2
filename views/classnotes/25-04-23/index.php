@@ -79,9 +79,13 @@
             </div>
         </form>
 
+        <a name="" id="" class="btn btn-success col-md-12" style="margin: 10px 0px 10px 0px;" href="../../../" role="button">Regresar al menu principal
+    </a>
 
     </div>
 
-    
 
-<?php require("../../footer.php");?>
+<?php
+    require("../../footer.php");
+?>
+    
