@@ -91,7 +91,7 @@
                                     $history_array_addons=[];
 
                                     foreach($valor as $item){
-                                        if($item>$value_addon){
+                                        if($item>$value_addon && is_numeric($item)){
                                             array_push($history_array_addons,TRUE);
                                         }else{
                                             array_push($history_array_addons,FALSE); 
@@ -110,7 +110,7 @@
                                     }
 
                                 }else{
-                                    if($valor>$value_addon){
+                                    if($valor>$value_addon && is_numeric($item)){
                                         $validation_addons=TRUE;
                                     }
                                 }
@@ -123,7 +123,7 @@
                                     $history_array_addons=[];
 
                                     foreach($valor as $item){
-                                        if($item>=$value_addon){
+                                        if($item>=$value_addon && is_numeric($item)){
                                             array_push($history_array_addons,TRUE);
                                         }else{
                                             array_push($history_array_addons,FALSE); 
@@ -140,7 +140,7 @@
                                     }
 
                                 }else{
-                                    if($valor>=$value_addon){
+                                    if($valor>=$value_addon && is_numeric($item)){
                                         $validation_addons=TRUE;
                                     }
                                 }
@@ -152,7 +152,7 @@
                                     $history_array_addons=[];
 
                                     foreach($valor as $item){
-                                        if($item<=$value_addon){
+                                        if($item<=$value_addon && is_numeric($item)){
                                             array_push($history_array_addons,TRUE);
                                         }else{
                                             array_push($history_array_addons,FALSE); 
@@ -169,7 +169,7 @@
                                     }
 
                                 }else{
-                                    if($valor<=$value_addon){
+                                    if($valor<=$value_addon && is_numeric($item)){
                                         $validation_addons=TRUE;
                                     }
                                 }
@@ -181,7 +181,7 @@
                                     $history_array_addons=[];
 
                                     foreach($valor as $item){
-                                        if($item<$value_addon){
+                                        if($item<$value_addon && is_numeric($item)){
                                             array_push($history_array_addons,TRUE);
                                         }else{
                                             array_push($history_array_addons,FALSE); 
@@ -202,7 +202,7 @@
                                     echo(var_dump($validation_addons)."<br>");
 
                                 }else{
-                                    if($valor<$value_addon){
+                                    if($valor<$value_addon && is_numeric($item)){
                                         $validation_addons=TRUE;
                                     }
                                 }

@@ -67,6 +67,22 @@
                             'type_page'=>'activity',
                             'route'=>'conditionals/'
                         ]
+                    ],
+
+                    //Link Tarea: Ejercicio Transmilenio
+                    [
+                        'card_title'=>'Ejercicios de aplicacion',
+                        'description'=>'Esta actividad se realiza con el fin de aplicar los conocimientos sobre arreglos, ciclos de control y condicionales a un problemas de la vida real',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'activity',
+                            'route'=>'aplication/'
+                        ]
                     ]
                 ]
             );
