@@ -117,8 +117,8 @@
 
                         $values=$input['values'];
                         foreach ($values as $value){
-
-                            $input_value=strtolower($value);
+                            
+                            $input_value=str_replace(" ","_",strtolower($value));
     
                             $form.=("
                                         <option value='$input_value' style='text-align:center;'>$value</option>
