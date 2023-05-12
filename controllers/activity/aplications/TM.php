@@ -2,7 +2,7 @@
     
     require("../../../addons/functions_global.php");
     $ruta_retorno="views/activity/aplications/TM/";
-    $ruta_result="views/result_2.php";
+    $ruta_result="views/result.php";
     
     $routes_names=recuperacion_post("route_name");
     $passengers_numbers=recuperacion_post("passenger_number");

@@ -23,21 +23,40 @@
 
     session_start();
 
-    $data=[
-        'title_header'=>"Salario Trabajador",
-        'title'=>"Salario Trabajador",
-        'thead'=>[
-            'Dato',
-            'Valor Ingresado'
-        ],
-        'rows'=>[
-            ['Dias trabajados',$dias_trabajados],
-            ['Horas Dias trabajadas',$cantidad_horas],
-            ['Valor Hora',"$$valor_hora"],
-            ['Salario total',"$$salario_total"],
-        ],
-        'route_return'=>'views/classnotes/25-04-23'
-    ];
+        $data=[
+            'title_header'=>"Salario Trabajador",
+            'title'=>"Conocer el Salario de un trabajador",
+            'thead'=>[
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
+            ],
+            'rows'=>[
+                [
+                    ['content'=>'Dias Trabajados'],
+                    ['content'=>$dias_trabajados]
+                ],
+                [
+                    ['content'=>'Horas Dias trabajadas'],
+                    ['content'=>$cantidad_horas]
+                ],
+                [
+                    ['content'=>'Valor Hora'],
+                    ['content'=>"$$valor_hora"]
+                ],
+                [
+                    ['content'=>'Salario Total'],
+                    ['content'=>"$$salario_total"]
+                ],
+            ],
+            'addons'=>[
+                [
+                    'name'=>"prefix_route",
+                    'value'=>"../"
+                ]
+            ],
+            'route_return'=>"views/classnotes/25-04-23"
+        ];
+
 
     $_SESSION['data']=$data;
 

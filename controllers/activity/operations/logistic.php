@@ -23,17 +23,27 @@
         $area=($base*$altura)/2;
 
         session_start();
+
         $data=[
             'title_header'=>"Area Triangulo",
             'title'=>"Calcular el Area de un Triangulo",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Base',$base],
-                ['Altura',$altura],
-                ['Area Final',$area]
+                [
+                    ['content'=>'Base'],
+                    ['content'=>$base]
+                ],
+                [
+                    ['content'=>'Altura'],
+                    ['content'=>$altura]
+                ],
+                [
+                    ['content'=>'Area final'],
+                    ['content'=>$area]
+                ]
             ],
             'addons'=>[
                 [
@@ -43,6 +53,7 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+
 
         $_SESSION['data']=$data;
 
@@ -71,21 +82,28 @@
         );
 
         session_start();
+
         $data=[
-            'litle_header'=>"Retorno Variables",
+            'title_header'=>"Retorno Variables",
             'title'=>"Ingresar y retornar dos variables",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ["Primera Variable",$var_1],
-                ["Segunda Variable",$var_2]
+                [
+                    ['content'=>'Primera Variable'],
+                    ['content'=>$var_1]
+                ],
+                [
+                    ['content'=>'Segunda Variable'],
+                    ['content'=>$var_2]
+                ]
             ],
             'addons'=>[
                 [
-                    'name'=>'prefix_route',
-                    'value'=>'../'
+                    'name'=>"prefix_route",
+                    'value'=>"../"
                 ]
             ],
             'route_return'=>$ruta_retorno
@@ -121,23 +139,32 @@
         $potencia=$base**$exponente;
 
         session_start();
+
         $data=[
             'title_header'=>"Potenciacion Estandar",
             'title'=>"Potenciacion",
             'thead'=>[
-                'Dato',
-                'Valor_ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Base',$base],
-                ['Exponente',$exponente],
-                ['Potencia',$potencia]
-
+                [
+                    ['content'=>'Base'],
+                    ['content'=>$base]
+                ],
+                [
+                    ['content'=>'Exponente'],
+                    ['content'=>$exponente]
+                ],
+                [
+                    ['content'=>'Potencia'],
+                    ['content'=>$potencia]
+                ],
             ],
             'addons'=>[
                 [
-                    'name'=>'prefix_route',
-                    'value'=>'../'
+                    'name'=>"prefix_route",
+                    'value'=>"../"
                 ]
             ],
             'route_return'=>$ruta_retorno
@@ -170,29 +197,39 @@
         );
 
         $dolares=$eur*$tasa_cambio;
+    
+        session_start();
 
         $data=[
-            'title_header'=>'TRM EUR-USD',
-            'title'=>'Conversion de Divisas EURO - DOLAR',
+            'title_header'=>"TRM EUR-USD",
+            'title'=>"Conversion de Divisas EURO - DOLAR",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Euros',$eur],
-                ['Tasa de Cambio',$tasa_cambio],
-                ['Total Dolares',$dolares]
+                [
+                    ['content'=>'Euros'],
+                    ['content'=>$eur]
+                ],
+                [
+                    ['content'=>'Tasa de Cambio'],
+                    ['content'=>$tasa_cambio]
+                ],
+                [
+                    ['content'=>'Total Dolares'],
+                    ['content'=>$dolares]
+                ],
             ],
             'addons'=>[
                 [
-                    'name'=>'prefix_route',
-                    'value'=>'../'
+                    'name'=>"prefix_route",
+                    'value'=>"../"
                 ]
             ],
             'route_return'=>$ruta_retorno
         ];
 
-        session_start();
         $_SESSION['data']=$data;
 
         type_validation(
@@ -224,17 +261,27 @@
         $area=$base*$altura;
 
         session_start();
+
         $data=[
             'title_header'=>"Area Rectangulo",
             'title'=>"Calcular el Area de un Rectangulo",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Base',$base],
-                ['Altura',$altura],
-                ['Area Final',$area]
+                [
+                    ['content'=>'Base'],
+                    ['content'=>$base]
+                ],
+                [
+                    ['content'=>'Altura'],
+                    ['content'=>$altura]
+                ],
+                [
+                    ['content'=>'Area final'],
+                    ['content'=>$area]
+                ]
             ],
             'addons'=>[
                 [
@@ -278,17 +325,27 @@
         $perimitero=$lado*4;
 
         session_start();
+
         $data=[
             'title_header'=>"Logitudes Cuadrado",
             'title'=>"Calcular el Area y Perimetro de un cuadrado",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Logitud Lado',$lado],
-                ['Area',$area],
-                ['Perimetro',$perimitero]
+                [
+                    ['content'=>'Longitud Lado'],
+                    ['content'=>$lado]
+                ],
+                [
+                    ['content'=>'Area'],
+                    ['content'=>$area]
+                ],
+                [
+                    ['content'=>'Perimetro'],
+                    ['content'=>$perimitero]
+                ]
             ],
             'addons'=>[
                 [
@@ -331,18 +388,31 @@
         $volumen=pi()*$radio**2*$altura;
 
         session_start();
+
         $data=[
             'title_header'=>"Logitudes Cilindro",
             'title'=>"Calcular el Area y Volumen de un Cilindro",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Radio',$radio],
-                ['Altura',$altura],
-                ['Area',$area],
-                ['Volumen',$volumen]
+                [
+                    ['content'=>'Radio'],
+                    ['content'=>$radio]
+                ],
+                [
+                    ['content'=>'Altura'],
+                    ['content'=>$altura]
+                ],
+                [
+                    ['content'=>'Area'],
+                    ['content'=>$area]
+                ],
+                [
+                    ['content'=>'Volumen'],
+                    ['content'=>$volumen]
+                ]
             ],
             'addons'=>[
                 [
@@ -385,17 +455,27 @@
         $area=pi()*$radio**2;
 
         session_start();
+
         $data=[
             'title_header'=>"Logitudes Circulo",
             'title'=>"Calcular el area y la longitud de un Circulo",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Radio',$radio],
-                ['Area',$area],
-                ['Logitud',$longitud]
+                [
+                    ['content'=>'Radio'],
+                    ['content'=>$radio]
+                ],
+                [
+                    ['content'=>'Area'],
+                    ['content'=>$area]
+                ],
+                [
+                    ['content'=>'Longitud'],
+                    ['content'=>$longitud]
+                ]
             ],
             'addons'=>[
                 [
@@ -435,18 +515,31 @@
         $promedio=($num_1+$num_2+$num_3)/3;
 
         session_start();
+
         $data=[
             'title_header'=>"Promedio Numerico",
             'title'=>"Promedio de 3 numeros",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Numero 1',$num_1],
-                ['Numero 2',$num_2],
-                ['Numero 3',$num_3],
-                ['Promedio',$promedio]
+                [
+                    ['content'=>'Numero 1'],
+                    ['content'=>$num_1]
+                ],
+                [
+                    ['content'=>'Numero 2'],
+                    ['content'=>$num_2]
+                ],
+                [
+                    ['content'=>'Numero 3'],
+                    ['content'=>$num_3]
+                ],
+                [
+                    ['content'=>'Promedio'],
+                    ['content'=>$promedio]
+                ],
             ],
             'addons'=>[
                 [
@@ -456,6 +549,7 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+        
 
         $_SESSION['data']=$data;
 
@@ -493,19 +587,27 @@
             'title_header'=>"Potenciacion Condicional",
             'title'=>"Potenciacion de Reales con enteros",
             'thead'=>[
-                'Dato',
-                'Valor_ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Base',$base],
-                ['Exponente',$exponente],
-                ['Potencia',$potencia]
-
+                [
+                    ['content'=>'Base'],
+                    ['content'=>$base]
+                ],
+                [
+                    ['content'=>'Exponente'],
+                    ['content'=>$exponente]
+                ],
+                [
+                    ['content'=>'Potencia'],
+                    ['content'=>$potencia]
+                ],
             ],
             'addons'=>[
                 [
-                    'name'=>'prefix_route',
-                    'value'=>'../'
+                    'name'=>"prefix_route",
+                    'value'=>"../"
                 ]
             ],
             'route_return'=>$ruta_retorno
