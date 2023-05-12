@@ -18,18 +18,24 @@
             $signo="No tiene Signo";
         }
 
-
         session_start();
+
         $data=[
             'title_header'=>"Signo del Numero",
             'title'=>"Conocer el Signo de un numero",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Numero Ingresado',$numero],
-                ['Signo',$signo]
+                [
+                    ['content'=>'Numero Ingresado'],
+                    ['content'=>$numero]
+                ],
+                [
+                    ['content'=>'Signo'],
+                    ['content'=>$signo]
+                ],
             ],
             'addons'=>[
                 [
@@ -39,6 +45,8 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+
+
 
         $_SESSION['data']=$data;
 

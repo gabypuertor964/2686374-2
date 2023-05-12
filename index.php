@@ -81,7 +81,7 @@
                         ],
                         'data_route'=>[
                             'type_page'=>'activity',
-                            'route'=>'aplication/'
+                            'route'=>'aplications/'
                         ]
                     ]
                 ]
