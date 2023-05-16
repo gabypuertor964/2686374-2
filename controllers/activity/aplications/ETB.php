@@ -165,6 +165,10 @@
         }
     }
 
+    $costo_total=($precio_america_norte+$precio_america_sur+$precio_america_central+$precio_europa+$precio_asia+$precio_africa+$precio_oceania);
+
+    $tiempo_total=($min_america_norte+$min_america_sur+$min_america_central+$min_europa+$min_asia+$min_africa+$min_oceania);
+
     session_start();
     $data=[
         'title_header'=>"Estadisticas TM",
@@ -268,6 +272,33 @@
                 ['content'=>'Oceania'],
                 ['content'=>"$$precio_oceania"]  
             ],
+            [
+                [
+                    'content'=>'Detallados finales',
+                    'addons'=>[
+                        [
+                            'name'=>'colspan',
+                            'value'=>2
+                        ],
+                        [
+                            'name'=>'style',
+                            'value'=>'
+                                font-weight:bold;
+                                font-style:italic;
+                            '
+                        ]
+                    ]
+                ]
+                
+            ],
+            [
+                ['content'=>'Costo Total'],
+                ['content'=>"$$costo_total"]  
+            ],
+            [
+                ['content'=>'Tiempo Total'],
+                ['content'=>"$tiempo_total"]  
+            ]
         ],
         'addons'=>[
             [
