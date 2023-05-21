@@ -23,7 +23,7 @@
                 [
                     //Link Actividad en clase (25-04-23): Operadores aritmeticos y Ejercicio Salario
                     [
-                        'card_title'=>'ActividadOperaciones Artimeticas',
+                        'card_title'=>'Actividad Operaciones Artimeticas',
                         'description'=>'Esta actividad se realiza con el fin de repasar los operadores aritmeticos junto con su aplicacion en los ciclos de control',
                         'buttons'=>[
                             [
@@ -39,7 +39,7 @@
 
                     //Link Tarea: Operadores Aritmeticos y Ejercicios
                     [
-                        'card_title'=>'Actividad Operadores',
+                        'card_title'=>'Actividad Operadores y Aplicacion',
                         'description'=>'Esta actividad se realiza con el fin de aplicar de manera mas profunda el concepto de operadores logicos y aritmeticos, asi como su implementacion en estructuras de control con un mayor nivel de dificultad',
                         'buttons'=>[
                             [
@@ -83,7 +83,24 @@
                             'type_page'=>'activity',
                             'route'=>'aplications/'
                         ]
+                    ],
+
+                    //Link Tarea: Actividad en clase: Clases, objetos, atributos y metodos
+                    [
+                        'card_title'=>'Actividad en Clase: Clases, Objetos, Atributos y Metodos',
+                        'description'=>'Esta actividad se realiza en clase con el fin de conocer y aplicar los conocimientos basicos de las clases a su como sus respetivas partes y claro su gran aporte y avance',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'classnotes',
+                            'route'=>'16-05-23/'
+                        ]
                     ]
+
                 ]
             );
         ?>
