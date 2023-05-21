@@ -10,7 +10,7 @@
         private $edad;
 
         //Crear Objeto
-        public function  __construct()
+        public function __construct()
         {
             $this->id=null;
             $this->nombre_aprendiz=null;
@@ -29,10 +29,12 @@
             $this->edad=$new_edad;
         }
 
+        //Conocer el nombre del aprendiz aunque esta propiedad sea privada
         public function conocer_nombre(){
             return $this->nombre_aprendiz;
         }
 
+        //Actualizar el nombre del aprendiz
         public function actualizar_nombre($new_name){
             $this->nombre_aprendiz=$new_name;
         }

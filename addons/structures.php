@@ -214,8 +214,13 @@
             $buttons=$card['buttons'];
 
             $route=$card['data_route'];
+
+            if(isset($route['type_page'])){
+                $type_page=$route['type_page'];
+            }else{
+                $type_page="";
+            }
             
-            $type_page=$route['type_page'];
 
             if(isset($route['addons_route'])){
 
