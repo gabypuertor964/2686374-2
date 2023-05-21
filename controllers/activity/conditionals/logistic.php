@@ -18,18 +18,24 @@
             $signo="No tiene Signo";
         }
 
-
         session_start();
+
         $data=[
             'title_header'=>"Signo del Numero",
             'title'=>"Conocer el Signo de un numero",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Numero Ingresado',$numero],
-                ['Signo',$signo]
+                [
+                    ['content'=>'Numero Ingresado'],
+                    ['content'=>$numero]
+                ],
+                [
+                    ['content'=>'Signo'],
+                    ['content'=>$signo]
+                ],
             ],
             'addons'=>[
                 [
@@ -78,18 +84,31 @@
         }
 
         session_start();
+
         $data=[
             'title_header'=>"Identificar Mayor",
             'title'=>"Identificar el numero mayor",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Primer Numero',$num_1],
-                ['Segundo Numero',$num_2],
-                ['Numero mayor',$numero_mayor],
-                ['Numero menor',$numero_menor]
+                [
+                    ['content'=>'Primer Numero'],
+                    ['content'=>$num_1]
+                ],
+                [
+                    ['content'=>'Segundo Numero'],
+                    ['content'=>$num_2]
+                ],
+                [
+                    ['content'=>'Numero Mayor'],
+                    ['content'=>$numero_mayor]
+                ],
+                [
+                    ['content'=>'Numero Menor'],
+                    ['content'=>$numero_menor],
+                ],
             ],
             'addons'=>[
                 [
@@ -191,21 +210,36 @@
             $numero_menor="Los numeros son iguales";
         }
 
-
         session_start();
+
         $data=[
             'title_header'=>"Identificar Mayor",
             'title'=>"Identificar el numero mayor",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Primer Numero',$num_1],
-                ['Segundo Numero',$num_2],
-                ['Tercer Numero',$num_3],
-                ['Numero mayor',$numero_mayor],
-                ['Numero menor',$numero_menor]
+                [
+                    ['content'=>'Primer Numero'],
+                    ['content'=>$num_1]
+                ],
+                [
+                    ['content'=>'Segundo Numero'],
+                    ['content'=>$num_2]
+                ],
+                [
+                    ['content'=>'Tercer Numero'],
+                    ['content'=>$num_3]
+                ],
+                [
+                    ['content'=>'Numero Mayor'],
+                    ['content'=>$numero_mayor]
+                ],
+                [
+                    ['content'=>'Numero Menor'],
+                    ['content'=>$numero_menor],
+                ],
             ],
             'addons'=>[
                 [
@@ -215,6 +249,7 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+        
 
         $_SESSION['data']=$data;
 
@@ -261,22 +296,41 @@
         }
 
         $salario=$salario_base+$salario_extra;
-
+   
         session_start();
+
         $data=[
             'title_header'=>"Salario trabajador",
             'title'=>"Conocer el Salario del Trabajador",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Nombre',$nombre],
-                ['Horas Estandar', $horas_estandar],
-                ['Salario Base', "$ $salario_base"],
-                ['Horas Extra',$horas_extra],
-                ['Valor horas Extra',"$ $salario_extra"],
-                ['Total',"$ $salario"]
+                [
+                    ['content'=>'Nombre'],
+                    ['content'=>$nombre]
+                ],
+                [
+                    ['content'=>'Horas estandar'],
+                    ['content'=>$horas_estandar]
+                ],
+                [
+                    ['content'=>'Salario base'],
+                    ['content'=>"$ $salario_base"]
+                ],
+                [
+                    ['content'=>'Horas extra'],
+                    ['content'=>$horas_extra]
+                ],
+                [
+                    ['content'=>'Valor horas extra'],
+                    ['content'=>"$ $salario_extra"],
+                ],
+                [
+                    ['content'=>'Salario Total'],
+                    ['content'=>"$ $salario"],
+                ],
             ],
             'addons'=>[
                 [
@@ -286,6 +340,7 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+        
 
         $_SESSION['data']=$data;
 
@@ -328,20 +383,33 @@
         }else{
             $residuo=0;
         }
-        
+
         session_start();
+
         $data=[
             'title_header'=>"Detallado Division",
             'title'=>"Detallado division entre A y B",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Dividendo', $dividendo],
-                ['Divisor',$divisor],
-                ['Cociente',$cociente],
-                ['Residuo',$residuo]
+                [
+                    ['content'=>'Dividendo'],
+                    ['content'=>$dividendo]
+                ],
+                [
+                    ['content'=>'Divisor'],
+                    ['content'=>$divisor]
+                ],
+                [
+                    ['content'=>'Cociente'],
+                    ['content'=>"$cociente"]
+                ],
+                [
+                    ['content'=>'Residuo'],
+                    ['content'=>$residuo]
+                ]
             ],
             'addons'=>[
                 [
@@ -399,18 +467,25 @@
                 $dia="Domingo";
             break;
         }
-        
+
         session_start();
+
         $data=[
-            'title_header'=>"Dia Semana",
-            'title'=>"Identificador Dia de la semana",
+            'title_header'=>"Detallado Division",
+            'title'=>"Detallado division entre A y B",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Numero del dia', $num_day],
-                ['Nombre del dia',$dia]
+                [
+                    ['content'=>'Numero de Dia'],
+                    ['content'=>$num_day]
+                ],
+                [
+                    ['content'=>'Nombre del Dia'],
+                    ['content'=>$dia]
+                ]
             ],
             'addons'=>[
                 [
@@ -462,18 +537,31 @@
         }
 
         session_start();
+
         $data=[
             'title_header'=>"Operaciones Aritmeticas",
             'title'=>"Operaciones Aritmeticas segun el signo",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Numero A', $num_a],
-                ['Numero B', $num_b],
-                ['Operacion', $operacion],
-                ['Resultado',$resultado]
+                [
+                    ['content'=>'Numero A'],
+                    ['content'=>$num_a]
+                ],
+                [
+                    ['content'=>'Numero B'],
+                    ['content'=>$num_b]
+                ],
+                [
+                    ['content'=>'Operacion'],
+                    ['content'=>"$operacion"]
+                ],
+                [
+                    ['content'=>'Resultado'],
+                    ['content'=>$resultado]
+                ]
             ],
             'addons'=>[
                 [
@@ -496,8 +584,6 @@
             $ruta_result
         );
 
-
-        
     }
 
     function sign($dia,$mes){
@@ -605,19 +691,35 @@
         }
 
         session_start();
+
         $data=[
             'title_header'=>"Signo Zodiacal",
             'title'=>"Conocer el signo zodical",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Dia Nacimiento', $dia],
-                ['Mes de Nacimiento', $mes],
-                ['Signo Zodiacal', $signo],
-                ['Limite Inferior',$limite_inferior],
-                ['Limite Superior',$limite_superior],
+                [
+                    ['content'=>'Dia Nacimiento'],
+                    ['content'=>$dia]
+                ],
+                [
+                    ['content'=>'Mes Nacimiento'],
+                    ['content'=>$mes]
+                ],
+                [
+                    ['content'=>'Signo Zodiacal'],
+                    ['content'=>"$signo"]
+                ],
+                [
+                    ['content'=>'Limte Inferior'],
+                    ['content'=>$limite_inferior]
+                ],
+                [
+                    ['content'=>'Limte Superior'],
+                    ['content'=>$limite_superior]
+                ],
             ],
             'addons'=>[
                 [
@@ -627,6 +729,7 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+        
 
         $_SESSION['data']=$data;
 
@@ -678,17 +781,27 @@
         $valor_final=$precio-($precio*($descuento/100));
 
         session_start();
+
         $data=[
             'title_header'=>"Descuentos",
             'title'=>"Aplicar escuento segun el precio",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Precio Inicial', "$$precio"],
-                ['Descuento',"$descuento%"],
-                ['Valor Final',"$$valor_final"],
+                [
+                    ['content'=>'Precio Inicial'],
+                    ['content'=>"$$precio"]
+                ],
+                [
+                    ['content'=>'Descuento'],
+                    ['content'=>"$descuento%"]
+                ],
+                [
+                    ['content'=>'Valor Final'],
+                    ['content'=>"$$valor_final"]
+                ]
             ],
             'addons'=>[
                 [
@@ -763,17 +876,27 @@
         }
 
         session_start();
+
         $data=[
             'title_header'=>"Clasificacion Nacimientos",
             'title'=>"Clasificacion de Nacimientos por Sexo",
             'thead'=>[
-                'Dato',
-                'Valor Ingresado'
+                ['content'=>'Nombre Item'],
+                ['content'=>'Valor Detallado']
             ],
             'rows'=>[
-                ['Sexo Masculino',$male],
-                ['Sexo Femenino',$female],
-                ['Total Nacimientos',count($genders)],
+                [
+                    ['content'=>'Sexo Masculino'],
+                    ['content'=>$male]
+                ],
+                [
+                    ['content'=>'Sexo Femenino'],
+                    ['content'=>$female]
+                ],
+                [
+                    ['content'=>'Total de nacimientos'],
+                    ['content'=>count($genders)]
+                ]
             ],
             'addons'=>[
                 [
@@ -783,6 +906,7 @@
             ],
             'route_return'=>$ruta_retorno
         ];
+
 
         $_SESSION['data']=$data;
 

@@ -13,7 +13,19 @@
         global $id_row;
 
         $route=$reception_route['route'];
-        $function=$reception_route['function'];
+
+        if(isset($reception_route['function'])){
+            $name_function=$reception_route['function'];
+            $function="?function=$name_function'";
+        }else{
+            $function="";
+        }
+
+        if(isset($reception_route['prefix_controller'])){
+            $prefix=$reception_route['prefix_controller'];
+        }else{
+            $prefix="../../..";
+        }
 
         $id_row++;
 
@@ -31,13 +43,14 @@
             $acm_addon_card="";
         }
 
+
         $form="
             <div class='container text-center'>                        
                     <div class='card'>
                         <div class='card-header'>
                             <h4 class='card-title'>$title_card</h4>
                         </div>
-                        <form action='../../../controllers/$route?function=$function' method='post'>
+                        <form action='$prefix/controllers/$route$function' method='post'>
                             <div class='card-body' $acm_addon_card>
                                 <div class='row' id='row_$id_row'>
     
@@ -104,8 +117,8 @@
 
                         $values=$input['values'];
                         foreach ($values as $value){
-
-                            $input_value=strtolower($value);
+                            
+                            $input_value=str_replace(" ","_",strtolower($value));
     
                             $form.=("
                                         <option value='$input_value' style='text-align:center;'>$value</option>
@@ -194,7 +207,6 @@
     }
 
     function links_home($data_cards){
-     
 
         foreach($data_cards as $card){
             $card_litle=$card['card_title'];
@@ -202,9 +214,28 @@
             $buttons=$card['buttons'];
 
             $route=$card['data_route'];
+
+            if(isset($route['type_page'])){
+                $type_page=$route['type_page'];
+            }else{
+                $type_page="";
+            }
             
-            $type_page=$route['type_page'];
-            $prefix="views/$type_page";
+
+            if(isset($route['addons_route'])){
+
+                $type_route=$route['addons_route']['type'];
+
+                switch($type_route){
+                    case 'absolute':
+                        $prefix="";
+                    break;
+                }
+
+            }else{
+                $prefix="views/$type_page/";
+            }
+            
 
             $route=$route['route'];
             
@@ -228,7 +259,7 @@
                 }
 
                 $card.="
-                    <a name='' id='' class='btn btn-$btn_class col-md-$row_button' href='$prefix/$route' role='button'>$text</a>
+                    <a name='' id='' class='btn btn-$btn_class col-md-$row_button' href='$prefix$route' role='button'>$text</a>
                 ";
 
             }
