@@ -10,13 +10,42 @@
         private $edad;
 
         //Crear Objeto
-        public function __construct()
+        public function __construct($id_aprendiz=null,$nombre_aprendiz=null,$genero_aprendiz=null,$fecha_nacimiento=null,$edad_aprendiz=null)
         {
-            $this->id=null;
-            $this->nombre_aprendiz=null;
-            $this->genero=null;
-            $this->fecha_nacimiento=null;
-            $this->edad=null;
+            //Validacion Declaracion de Datos
+            if($id_aprendiz<>null){
+                $this->id=$id_aprendiz;
+            }else{
+                $this->id=null;
+            }
+
+            //Validacion Declaracion de Datos
+            if($nombre_aprendiz<>null){
+                $this->nombre_aprendiz=$nombre_aprendiz;
+            }else{
+                $this->nombre_aprendiz=null;
+            }
+
+            //Validacion Declaracion de Datos
+            if($genero_aprendiz<>null){
+                $this->genero=$genero_aprendiz;
+            }else{
+                $this->genero=null;
+            }
+
+            //Validacion Declaracion de Datos
+            if($fecha_nacimiento<>null){
+                $this->fecha_nacimiento=$fecha_nacimiento;
+            }else{
+                $this->fecha_nacimiento=null;
+            }
+
+            //Validacion Declaracion de Datos
+            if($edad_aprendiz<>null){
+                $this->edad=$edad_aprendiz;
+            }else{
+                $this->edad=null;
+            }
 
         }
 
