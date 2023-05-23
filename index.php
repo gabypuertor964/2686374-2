@@ -99,8 +99,23 @@
                             'type_page'=>'classnotes',
                             'route'=>'16-05-23/'
                         ]
-                    ]
+                    ],
 
+                    //Link Tarea: Actividad -> Copa Pole Position 
+                    [
+                        'card_title'=>'Ejercicio: Copa Pole Position',
+                        'description'=>'Esta actividad se realiza en clase con el fin de reforzar tanto el manejo como la construccion de matrices',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'activity',
+                            'route'=>'arrays/'
+                        ]
+                    ]
                 ]
             );
         ?>
