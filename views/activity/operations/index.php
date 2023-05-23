@@ -285,8 +285,3 @@
 <?php
     require("../../footer.php");
 ?>
-    
-
-
-
-
