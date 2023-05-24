@@ -5,16 +5,20 @@
     class tienda{
 
         //Defincion de Atributos 
-        private $balance_caja;
+        private $nombreTienda;
+        private $balanceCaja;
         private $producto_1=null;
         private $producto_2=null;
         private $producto_3=null;
 
         //Funcion Constructora, tanto del balance actual de la caja como de los 3 productos a ofrecer
-        public function __construct($caja_inicial=null,$productos){
+        public function __construct($caja_inicial=null,$nombre_tienda,$productos){
 
             //Definicion de Balance actual de la caja
-            $this->balance_caja=$caja_inicial;
+            $this->balanceCaja=$caja_inicial;
+
+            //Definicion del nombre de la tienda
+            $this->nombreTienda=$nombre_tienda;
 
             //Acceder de Forma individual a cada Producto, para su posterior instanciamiento
             foreach($productos as $producto){
@@ -39,32 +43,26 @@
             }
         }
 
+        /*
+            Esta funcion tiene como fin, retornar cada uno de los productos, en forma de objeto
+        */
+        public function product_information($cod_producto){
+            switch($cod_producto){
+                case 1:
+                    return $this->producto_1->show_attibutes(['nombre','precio','cantidad','cantidad_min','tipo_iva']);
+                break;
+
+                case 2:
+                    return $this->producto_2->show_attibutes(['nombre','precio','cantidad','cantidad_min','tipo_iva']);
+                break;
+
+                case 3:
+                    return $this->producto_3->show_attibutes(['nombre','precio','cantidad','cantidad_min','tipo_iva']);
+                break;
+
+            }
+        }
+
     }
-
-    $nueva_tienda= new tienda(2000,[
-        [
-            'nombre'=>'Arroz',
-            'precio'=>2500,
-            'cantidad'=>50,
-            'cantidad_min'=>5,
-            'tipo_iva'=>'Estandar'
-        ],
-
-        [
-            'nombre'=>'Aguacate',
-            'precio'=>3000,
-            'cantidad'=>25,
-            'cantidad_min'=>2,
-            'tipo_iva'=>'Estandar'
-        ],
-
-        [
-            'nombre'=>'Lechuga',
-            'precio'=>2000,
-            'cantidad'=>10,
-            'cantidad_min'=>1,
-            'tipo_iva'=>'Estandar'
-        ],
-    ]);
 
 ?>

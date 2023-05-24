@@ -12,7 +12,7 @@
         /*
             Explicacion: Funcion encargada de validar el numero actual de existencia de un producto, en caso de haber llegado al limite, enviara un mensaje al usuario indicandole dicho suceso
         */
-        function notificar_existencia(){
+        private function notificar_existencia(){
             $cantidad_actual=$this->cantidad;
             $cantidad_minima=$this->cantidadMin;
 
@@ -117,38 +117,28 @@
                 //Segun La informacion Solicitada Consultame
                 switch($dato_buscado){
                     case "nombre":
-
                         $nombre=$this->nombreProducto;
                         $info_retornar["nombre"]=$nombre;
-
                     break;
 
                     case "precio":
-
                         $precio=$this->precio;
                         $info_retornar["precio"]=$precio;
-
                     break;
 
                     case "cantidad":
-
                         $cantidad=$this->cantidad;
                         $info_retornar["cantidad"]=$cantidad;
-
                     break;
 
                     case "cantidad_min":
-
                         $cantidadMin=$this->cantidadMin;
                         $info_retornar["cantidad_min"]=$cantidadMin;
-
                     break;
 
                     case "tipo_iva":
-
                         $tipo_iva=$this->tipoIVA;
                         $info_retornar["tipo_iva"]=$tipo_iva;
-
                     break;
                 }   
             }
