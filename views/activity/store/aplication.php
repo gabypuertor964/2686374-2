@@ -6,9 +6,6 @@
     //Activacion de la Sesion
     session_start();
 
-    //Guardado Objeto Tienda
-    //$store = $_SESSION['object_store'];
-
     //Guardado Individual de los datos de cada producto
     $producto_1=$_SESSION['producto_1'];
     $producto_2=$_SESSION['producto_2'];

@@ -1,30 +1,50 @@
 <?php
+    $_SESSION['title_header']="Ejercicio Banco";
+    require("../../header.php");
+    require("../../../addons/structures.php");
+?>
 
-    require("../../../controllers/activity/bank/cajero.php");
+<?php
 
-    $cajero = new cajero();
+    //Construya el código para saber si un número es positivo o negativo.
+    forms_generate(
+        [
+            'route'=>"activity/bank/manager.php",
+            'function'=>'activation'
+        ],
+        'Crear una Nueva cuenta',
+        [
+            [
+                'label'=>'Nombre del Cliente',
+                'type'=>'text',
+                'name'=>'nombre_cliente'
+            ],
+            [
+                'label'=>'Numero de Cuenta',
+                'type'=>'number',
+                'name'=>'numero_cuenta'
+            ],
+            [
+                'label'=>'Saldo inicial cuenta',
+                'type'=>'number',
+                'name'=>'saldo_cuenta'
+            ],
+            [
+                'label'=>'Contraseña de la cuenta',
+                'type'=>'password',
+                'name'=>'password_account'
+            ],
+        ],
+        [
+            [
+                'text'=>'Generar',
+                'btn_class'=>'success'
+            ]
+        ]
+    );
 
-    echo(var_dump($cajero)."<br><br>");
+?>
 
-    $cajero -> realizar_consignacion(1000000);
-    echo("<br><br>");
-
-    echo(var_dump($cajero->show_attributes(['saldo']))."<br><br>");
-
-    $cajero -> realizar_retiros(200000);
-
-    echo("<br><br>");
-
-    echo(var_dump($cajero->show_attributes(['saldo']))."<br><br>");
-
-    $cajero -> update_attibutes("Sandra Gabriela Puerto Rojas",1019604623);
-
-    echo("<br><br>");
-
-    echo(var_dump($cajero->show_attributes(['nombre_cliente','saldo','cod_cuenta']))."<br><br>");
-
-
-
-
-
+<?php
+    require("../../footer.php");
 ?>

@@ -115,6 +115,22 @@
                             'type_page'=>'activity',
                             'route'=>'arrays/'
                         ]
+                    ],
+
+                    //Link Actividad: Ejercicio Tienda
+                    [
+                        'card_title'=>'Ejercicio: Tienda',
+                        'description'=>'Esa actividad se realiza con el fin de aplicar los conceptos de POO, aplicadas a sucesos de la vida real, en este caso, una tienda de barrio',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'activity',
+                            'route'=>'store/'
+                        ]
                     ]
                 ]
             );
