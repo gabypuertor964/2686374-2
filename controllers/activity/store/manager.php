@@ -196,7 +196,7 @@
                 ){
                     $movimiento=$info_operacion['cant_anterior']-$info_operacion['cant_actual'];
                 }else{
-                    $movimiento=$info_operacion['cant_actual']-$info_operacion['cant_actual'];
+                    $movimiento=$info_operacion['cant_actual']-$info_operacion['cant_anterior'];
                 }
 
                 //Ingreso de la informacion de cada operacion realizada
@@ -215,14 +215,136 @@
 
             }
 
-           var_dump($data_result);
-           echo("<br><br><br>");
+            $nombre_tienda = $store->show_attributes(['nombre_tienda'])['nombre_tienda'];
 
-           echo($store->conocer_balance());
+            $data=[
+                'title_header'=>"Detallado Factura",
+                'title'=>"Detallado Movimientos de la Tienda $nombre_tienda",
+                'thead'=>[
+                    ['content'=>'Nombre Producto'],
+                    ['content'=>'Operacion'],
+                    ['content'=>'Cantidad Anterior'],
+                    ['content'=>'Cantidad Actual'],
+                    ['content'=>'Estado'],
+                    ['content'=>'Movimiento'],
+                    ['content'=>'Costo Total'],
+                    ['content'=>'Descripcion/Comentario'],
+                ],
+                'rows'=>[
+                    [
+                        [
+                            'content'=>'Transaccion 1',
+                            'addons'=>[
+                                [
+                                    'name'=>'colspan',
+                                    'value'=>8
+                                ],
+                                [
+                                    'name'=>'style',
+                                    'value'=>'
+                                        font-weight:bold;
+                                        font-style:italic;
+                                    '
+                                ]
+                            ]
+                        ]
+                        
+                    ],
+                    [
+                        ['content'=>str_replace("_"," ",$data_result[0]['nombre'])],
+                        ['content'=>$data_result[0]['operacion']],  
+                        ['content'=>$data_result[0]['cant_anterior']],
+                        ['content'=>$data_result[0]['cant_actual']],
+                        ['content'=>$data_result[0]['estado']],
+                        ['content'=>$data_result[0]['movimiento']],
+                        ['content'=>$data_result[0]['costo_total']],
+                        ['content'=>$data_result[0]['descripcion']],
+                    ],
+                    [
+                        [
+                            'content'=>'Transaccion 2',
+                            'addons'=>[
+                                [
+                                    'name'=>'colspan',
+                                    'value'=>8
+                                ],
+                                [
+                                    'name'=>'style',
+                                    'value'=>'
+                                        font-weight:bold;
+                                        font-style:italic;
+                                    '
+                                ]
+                            ]
+                        ]
+                        
+                    ],
+                    [
+                        ['content'=>str_replace("_"," ",$data_result[1]['nombre'])],
+                        ['content'=>$data_result[1]['operacion']],  
+                        ['content'=>$data_result[1]['cant_anterior']],
+                        ['content'=>$data_result[1]['cant_actual']],
+                        ['content'=>$data_result[1]['estado']],
+                        ['content'=>$data_result[1]['movimiento']],
+                        ['content'=>$data_result[1]['costo_total']],
+                        ['content'=>$data_result[1]['descripcion']],
+                    ],
+                    [
+                        [
+                            'content'=>'Transaccion 3',
+                            'addons'=>[
+                                [
+                                    'name'=>'colspan',
+                                    'value'=>8
+                                ],
+                                [
+                                    'name'=>'style',
+                                    'value'=>'
+                                        font-weight:bold;
+                                        font-style:italic;
+                                    '
+                                ]
+                            ]
+                        ]
+                        
+                    ],
+                    [
+                        ['content'=>str_replace("_"," ",$data_result[2]['nombre'])],
+                        ['content'=>$data_result[2]['operacion']],  
+                        ['content'=>$data_result[2]['cant_anterior']],
+                        ['content'=>$data_result[2]['cant_actual']],
+                        ['content'=>$data_result[2]['estado']],
+                        ['content'=>$data_result[2]['movimiento']],
+                        ['content'=>$data_result[2]['costo_total']],
+                        ['content'=>$data_result[2]['descripcion']],
+                    ],
+                ],
+                'addons'=>[
+                    [
+                        'name'=>"prefix_route",
+                        'value'=>"../"
+                    ]
+                ],
+                'route_return'=>$ruta_retorno
+            ];
+            
+            $_SESSION['data']=$data;
+            $_SESSION['addons']=[
+                [
+                    'name'=>'prefix_route',
+                    'value'=>'../../../'
+                ]
+            ];
+    
+            type_validation(
+                [
+                    [$data,'all']
+                ],
+                $ruta_retorno,
+                "views/result.php"
+            );
             
 
         break;
     }
-
-    
 ?>

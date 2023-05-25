@@ -18,7 +18,7 @@
             $this->balanceCaja=$caja_inicial;
 
             //Definicion del nombre de la tienda
-            $this->nombreTienda=str_replace(" ","_",strtolower($nombre_tienda));
+            $this->nombreTienda=$nombre_tienda;
 
             //Acceder de Forma individual a cada Producto, para su posterior instanciamiento
             foreach($productos as $producto){
@@ -149,9 +149,24 @@
 
         } 
 
-        //Funcion encargada de retornar el balance actual de la caja
-        public function conocer_balance(){
-            return $this->balanceCaja;
+        //Funcion encargada de retornar informacion de la tienda
+        public function show_attributes($datos_buscados){
+            $info_retorno=[];
+            foreach($datos_buscados as $dato_buscado){
+
+                switch($dato_buscado){
+                    case "balance_caja":
+                        $info_retorno['balance_caja']=$this->balanceCaja;
+                    break;
+
+                    case "nombre_tienda":
+                        $info_retorno['nombre_tienda']=$this->nombreTienda;
+                    break;
+                }
+
+            }
+
+            return $info_retorno;
         }
 
     }

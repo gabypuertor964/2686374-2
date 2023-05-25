@@ -28,7 +28,7 @@
 
     //Etapa 1: Apretura etiqueta table junto a sus correspondientes clases
     $table="
-        <table class='table table-bordered table-striped'>
+        <table class='table table-bordered table-striped text-center align-items-center justify-content-center'>
     ";
 
     /*
@@ -92,7 +92,7 @@
             }
 
             $table.="
-                            <td $addons_column>$content</td>
+                            <td $addons_column class='align-middle'>$content</td>
             ";
 
         }

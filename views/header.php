@@ -5,8 +5,6 @@
 
     if(isset($_SESSION['addons'])){
 
-        var_dump($_SESSION['addons']);
-
         $addons=$_SESSION['addons'];
 
         foreach($addons as $addon){
