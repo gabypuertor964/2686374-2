@@ -4,13 +4,13 @@
     require("tienda.php");
 
     $ruta_retorno="views/activity/store";
-    $ruta_result="views/result.php";
 
     //Validar si se envio informacion por la URL del formulario
     type_validation([[$_GET['function'],"all"]],$ruta_retorno);
 
     switch($_GET['function']){
 
+        //Escenario de Instanciamiento del Objeto
         case "activation":
 
             //Recuperacion de informacion global de la tienda
@@ -94,9 +94,16 @@
                 ]
             );
 
-            //Activacion de Sesion y Guardado del objeto creado
+            /*
+                Activacion de sesion y posterior guardado tanto del objeto tienda como de la informacion a demanda de cada producto individual
+            */
             session_start();
-            $_SESSION['object_store']=$store;
+
+            $_SESSION['store']=$store;
+
+            $_SESSION['producto_1']=$store->product_information(1,["nombre"]);
+            $_SESSION['producto_2']=$store->product_information(2,["nombre"]);
+            $_SESSION['producto_3']=$store->product_information(3,["nombre"]);
 
             //Validacion de estado de los datos a ingresar y posterior redireccion
             type_validation(
@@ -106,6 +113,113 @@
                 $ruta_retorno,
                 "views/activity/store/aplication.php"
             );
+
+        break;
+
+        //Escenario de Manejo de Operaciones ingresadas (Compra/Venta)
+        case "operations": 
+
+            //Recuperacion de la informacion recibida en el formulario
+            $nombre_productos = recuperacion_post("nombre_producto");
+
+            $tipos_operaciones = recuperacion_post("tipo_operacion");
+
+            $num_unidades = recuperacion_post("num_unidades");
+
+            //Validacion del buen estado de los datos
+            type_validation(
+                [
+                    [$nombre_productos,"array"],
+                    [$tipos_operaciones,"array"],
+                    [
+                        $num_unidades,
+                        "array",
+                        [
+                            ['min_equal',1]
+                        ]
+                        
+                    ]
+                ],
+                "views/activity/store/aplication.php"
+            );
+
+            session_start();
+
+            //Recuperacion del Objeto tienda
+            $store = $_SESSION['store'];
+
+            //Definicion de Arreglo usado para enviar el resumen de las operaciones realizadas
+            $data_result=[];
+
+            //Ciclo Para acceder de forma individual a cada movimiento ingresado por el usuario
+            for($id_producto=0; $id_producto<count($nombre_productos); $id_producto++){
+
+                //Nombre individual del Producto a Afectar
+                $nom_producto = $nombre_productos[$id_producto];
+
+                //Tipo de Operacion a Realizar
+                $tip_operacion = $tipos_operaciones[$id_producto];
+
+                //Cantidad de unidades a operar
+                $unidades = $num_unidades[$id_producto];
+
+                //Segun el tipo de operacion indicara, use un metodo u otro
+                switch($tip_operacion){
+
+                    case "compra":
+
+                        //Variable contenedora de la respuesta a n operacion solicitada
+                        $info_operacion = $store->proceso_compra($nom_producto,$unidades);
+
+                        
+                    break;
+
+                    case "venta":
+
+                        //Variable contenedora de la respuesta a n operacion solicitada
+                        $info_operacion = $store->proceso_venta($nom_producto,$unidades);
+                        
+                    break;
+
+                    default:
+                        $info_operacion['cant_anterior']=0;
+                        $info_operacion['cant_actual']=0;
+                        $info_operacion['estado']="Fallida";
+                        $info_operacion['costo_total']=0;
+                        $info_operacion['desc_operacion']="Error, la operacion $tip_operacion, no esta permitida";
+                    break;
+                }
+
+                //Calculo del movimiento antes vs despues de realizar la operacion
+                if(
+                    $info_operacion['cant_anterior']>$info_operacion['cant_actual']
+                ){
+                    $movimiento=$info_operacion['cant_anterior']-$info_operacion['cant_actual'];
+                }else{
+                    $movimiento=$info_operacion['cant_actual']-$info_operacion['cant_actual'];
+                }
+
+                //Ingreso de la informacion de cada operacion realizada
+                array_push($data_result,
+                    [
+                        'nombre'=>$nom_producto,
+                        'operacion'=>$tip_operacion,
+                        'cant_anterior'=>$info_operacion['cant_anterior'],
+                        'cant_actual'=>$info_operacion['cant_actual'],
+                        'estado'=>$info_operacion['estado'],
+                        'movimiento'=>$movimiento,
+                        'costo_total'=>$info_operacion['costo_total'],
+                        'descripcion'=>$info_operacion['desc_operacion']
+                    ]
+                );
+
+            }
+
+           var_dump($data_result);
+           echo("<br><br><br>");
+
+           echo($store->conocer_balance());
+            
 
         break;
     }

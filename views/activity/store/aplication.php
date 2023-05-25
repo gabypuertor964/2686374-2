@@ -7,16 +7,16 @@
     session_start();
 
     //Guardado Objeto Tienda
-    $store = $_SESSION['object_store'];
+    //$store = $_SESSION['object_store'];
 
     //Guardado Individual de los datos de cada producto
-    $producto_1=$store->product_information(1);
-    $producto_2=$store->product_information(2);
-    $producto_3=$store->product_information(3);
+    $producto_1=$_SESSION['producto_1'];
+    $producto_2=$_SESSION['producto_2'];
+    $producto_3=$_SESSION['producto_3'];
 
     $_SESSION['title_header']="Sistema Compra/Venta";
-    require("../../header.php");
     require("../../../addons/structures.php");
+    require("../../header.php");
 
 ?>
 
@@ -26,17 +26,18 @@
     forms_generate(
         [
             'route'=>"activity/store/manager.php",
-            'prefix_controller'=>'../../../..'
+            'prefix_controller'=>'../../..',
+            'function'=>'operations'
         ],
-        'Registrar Llamada',
+        'Nueva Factura',
         [
             [
                 'label'=>'Nombre Producto',
                 'type'=>'select',
                 'values'=>[
-                    $producto_1['nombre'],
-                    $producto_2['nombre'],
-                    $producto_3['nombre']   
+                    str_replace("_"," ",$producto_1['nombre']),
+                    str_replace("_"," ",$producto_2['nombre']),
+                    str_replace("_"," ",$producto_3['nombre']),
                 ],
                 'name'=>'nombre_producto[]'
             ],

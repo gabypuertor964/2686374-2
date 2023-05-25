@@ -18,7 +18,7 @@
             $this->balanceCaja=$caja_inicial;
 
             //Definicion del nombre de la tienda
-            $this->nombreTienda=$nombre_tienda;
+            $this->nombreTienda=str_replace(" ","_",strtolower($nombre_tienda));
 
             //Acceder de Forma individual a cada Producto, para su posterior instanciamiento
             foreach($productos as $producto){
@@ -46,21 +46,112 @@
         /*
             Esta funcion tiene como fin, retornar cada uno de los productos, en forma de objeto
         */
-        public function product_information($cod_producto){
+        public function product_information($cod_producto,$datos_buscados){
+
             switch($cod_producto){
                 case 1:
-                    return $this->producto_1->show_attibutes(['nombre','precio','cantidad','cantidad_min','tipo_iva']);
+                    return $this->producto_1->show_attibutes($datos_buscados);
                 break;
 
                 case 2:
-                    return $this->producto_2->show_attibutes(['nombre','precio','cantidad','cantidad_min','tipo_iva']);
+                    return $this->producto_2->show_attibutes($datos_buscados);
                 break;
 
                 case 3:
-                    return $this->producto_3->show_attibutes(['nombre','precio','cantidad','cantidad_min','tipo_iva']);
+                    return $this->producto_3->show_attibutes($datos_buscados);
                 break;
 
             }
+        }
+
+        /*
+            Funcion intermediaria para evaluar y realizar el proceso de venta de n producto
+        */
+        public function proceso_venta($nombre_producto,$unidades){
+
+            //Arreglo contendero de la respuesta al proceso de compra
+            $info_operacion=[];
+
+            //Validar si el nombre del producto ingresado, corresponde a algun producto ya registrado
+            if($this->producto_1->validar_nombre($nombre_producto)){
+
+                //Realizar la Operacion indicada y guardar su resultado
+                $info_operacion=$this->producto_1->vender_producto($unidades);
+
+            }elseif($this->producto_2->validar_nombre($nombre_producto)){
+
+                //Realizar la Operacion indicada y guardar su resultado
+                $info_operacion=$this->producto_2->vender_producto($unidades);
+
+            }elseif($this->producto_3->validar_nombre($nombre_producto)){
+
+                //Realizar la Operacion indicada y guardar su resultado
+                $info_operacion=$this->producto_3->vender_producto($unidades);
+
+            //En caso de no encontrar el Producto, retornara el mensaje de error
+            }else{
+                $info_operacion['cant_anterior']=0;
+                $info_operacion['cant_actual']=0;
+                $info_operacion['estado']="Fallida";
+                $info_operacion['costo_total']=0;
+                $info_operacion['desc_operacion']="Error, el producto $nombre_producto, no se encuentra registrado";
+            }
+
+            //Al haberse hecho una venta, se debe aumetar el dinero en caja
+            $this->balanceCaja+=$info_operacion['costo_total'];
+
+            //Retornar la Informacion
+            return $info_operacion;
+
+        }  
+
+        /*
+            Funcion intermediaria para evaluar y realizar el proceso de compra de n producto
+        */
+        public function proceso_compra($nombre_producto,$unidades){
+
+            //Arreglo contendero de la respuesta al proceso de compra
+            $info_operacion=[];
+
+            //Guardado del balance actual de la caja, ya que se usara como argumento para validar la viabilidad del proceso de compra
+            $balance_actual=$this->balanceCaja;
+
+            //Validar si el nombre del producto ingresado, corresponde a algun producto ya registrado
+            if($this->producto_1->validar_nombre($nombre_producto)){
+
+                //Realizar la Operacion indicada y guardar su resultado
+                $info_operacion=$this->producto_1->comprar_producto($unidades,$balance_actual);
+
+            }elseif($this->producto_2->validar_nombre($nombre_producto)){
+
+                //Realizar la Operacion indicada y guardar su resultado
+                $info_operacion=$this->producto_2->comprar_producto($unidades,$balance_actual);
+
+            }elseif($this->producto_3->validar_nombre($nombre_producto)){
+
+                //Realizar la Operacion indicada y guardar su resultado
+                $info_operacion=$this->producto_3->comprar_producto($unidades,$balance_actual);
+
+            //En caso de no encontrar el Producto, retornara el mensaje de error
+            }else{
+                $info_operacion['cant_anterior']=0;
+                $info_operacion['cant_actual']=0;
+                $info_operacion['estado']="Fallida";
+                $info_operacion['costo_total']=0;
+                $info_operacion['desc_operacion']="Error, el producto $nombre_producto, no se encuentra registrado";
+            }
+
+            //Al haberse hecho una compra, se debe reducir el dinero en caja
+            $this->balanceCaja-=$info_operacion['costo_total'];
+
+            //Retornar la Informacion
+            return $info_operacion;
+
+        } 
+
+        //Funcion encargada de retornar el balance actual de la caja
+        public function conocer_balance(){
+            return $this->balanceCaja;
         }
 
     }
