@@ -131,7 +131,25 @@
                             'type_page'=>'activity',
                             'route'=>'store/'
                         ]
+                    ],
+
+                    //Link Actividad: Ejercicio Banco
+                    [
+                        'card_title'=>'Ejercicio: Banco',
+                        'description'=>'Esa actividad se realiza con el fin de aplicar los conceptos de POO, aplicadas a sucesos de la vida real, en este caso, un banco',
+                        'buttons'=>[
+                            [
+                                'text'=>'Revisar',
+                                'btn_class'=>'success'
+                            ]
+                        ],
+                        'data_route'=>[
+                            'type_page'=>'activity',
+                            'route'=>'bank/'
+                        ]
                     ]
+
+
                 ]
             );
         ?>
