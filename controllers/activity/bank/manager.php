@@ -74,12 +74,14 @@
 
             type_validation(
                 [
-                    [$tipo_operacion,"string"],
+                    [$tipo_transaccion,"string"],
                     [$valor_movimiento,"numeric"],
                     [$password_account,"all"]
                 ],
                 $ruta_retorno
             );
+
+            session_start();
 
             //Guardar el Objeto cajero junto con toda su informacion
             $cajero = $_SESSION['cajero'];
@@ -87,17 +89,17 @@
             //Segun el tipo de operacion, realizar:
             switch($tipo_transaccion){
 
-                case "consignar":
+                case "consigancion":
 
                     //Guardar los datos resultantes de realizar n transaccion
-                    $info_transaccion = $cajero->realizar_consignacion($password_account,$valor_movimiento);
+                    $info_transaccion = $cajero->consignar_dinero($password_account,$valor_movimiento);
 
                 break;
 
-                case "retirar":
+                case "retiro":
 
                     //Guardar los datos resultantes de realizar n transaccion
-                    $info_transaccion = $cajero->realizar_retiro($password_account,$valor_movimiento);
+                    $info_transaccion = $cajero->retirar_dinero($password_account,$valor_movimiento);
 
                 break;
 
@@ -106,6 +108,13 @@
                     header("../../../views/activity/bank");
                 break;
             }
+
+            type_validation(
+                [
+                    [$info_transaccion,"array"]
+                ],
+                $ruta_retorno
+            );
 
             //Guardado nombre cliente
             $nombre_cliente = $info_transaccion['nombre_cliente'];
@@ -124,7 +133,7 @@
                 'rows'=>[
                     [
                         ['content'=>$tipo_transaccion],
-                        ['content'=>$info_transaccion['estado']],  
+                        ['content'=>$info_transaccion['status']],  
                         ['content'=>$info_transaccion['movimiento']],
                         ['content'=>$info_transaccion['saldo_anterior']],
                         ['content'=>$info_transaccion['saldo_actual']],
@@ -138,7 +147,7 @@
                         'value'=>"../"
                     ]
                 ],
-                'route_return'=>$ruta_retorno
+                'route_return'=>"views/activity/bank/operations.php"
             ];
             
             $_SESSION['data']=$data;
@@ -156,9 +165,6 @@
                 $ruta_retorno,
                 "views/result.php"
             );
-
-            
-
 
         break;
 

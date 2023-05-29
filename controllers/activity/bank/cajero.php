@@ -16,7 +16,16 @@
             return $this->cuenta->show_attributes($datos_buscados);
         }
 
-        
+        //Funcion encargada de conectar la peticion de retiro desde el archivo manager, hasta el objeto cuenta y de forma inversa enviara los datos de respuesta de dicha transaccion
+        public function retirar_dinero($password_account,$valor_movimiento){
+            return $this->cuenta->retirar_dinero($password_account,$valor_movimiento);
+        }
+
+        //Funcion encargada de conectar la peticion de consignacion desde el archivo manager, hasta el objeto cuenta y de forma inversa enviara los datos de respuesta de dicha transaccion
+        public function consignar_dinero($password_account,$valor_movimiento){
+            return $this->cuenta->consignar_dinero($password_account,$valor_movimiento);
+        }
+
     }
 
 
