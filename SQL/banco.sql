@@ -56,9 +56,4 @@ CREATE TABLE transactions(
     id_account_origin int NOT NULL,
     price varchar(10) NOT NULL,
     id_account_destiny int,
-
 );
-
-
-
-
